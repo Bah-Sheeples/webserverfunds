@@ -11,7 +11,7 @@
     </h2>
     <body>
 
-        <form action="response_2_1.php" method="GET">
+        <form action="response_2_1.php" method="POST">
             <label for="fname" hidden>First Name:</label>
             <input type="text" id="fname" pattern="[A-Za-z0-9]" title="Letters Only" hidden>  
             <label for="lname" hidden>Last Name:</label>
@@ -49,10 +49,6 @@
             <input type="submit">
         </p>
         </form>
-
-
-        <p><?= var_dump($_GET) ?></p>
-        <p><?= var_dump($_POST) ?></p>
 
     </body>
 
