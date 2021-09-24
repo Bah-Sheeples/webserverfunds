@@ -21,11 +21,11 @@
 
 
         <p>Choose a favorite Unit Type
-            <input type="radio" id="infantry" name="unit-type" value="infantry">
+            <input type="radio" id="infantry" name="unit-type" value="Infantry">
             <label for="unit-type">Infantry</label>
-            <input type="radio" id="team-weapon" name="unit-type" value="team-weapon">
+            <input type="radio" id="team-weapon" name="unit-type" value="Team Weapons">
             <label for="unit-type">Team Weapon</label>
-            <input type="radio" id="vehicles" name="unit-type" value="vehicle">
+            <input type="radio" id="vehicles" name="unit-type" value="Vehicle">
             <label for="unit-type">Vehicles</label>
         </p>
 
@@ -41,10 +41,10 @@
         <p>
             <label for="type-infantry">Choose a Archetype:</label>
             <select id="type-infantry" name="type-infantry">
-            <option value="line-inf">Generalist</option>
-            <option value="elite-inf">Elite Infantry</option>
-            <option value="at-inf">Anti-Tank Infantry</option>
-            <option value="sneak-inf">Sneaky Infantry</option>
+            <option value="Generalist">Generalist</option>
+            <option value="Elite Infantry">Elite Infantry</option>
+            <option value="AT Infantry">Anti-Tank Infantry</option>
+            <option value="Sneaky Infantry">Sneaky Infantry</option>
             </select>
             <input type="submit">
         </p>
