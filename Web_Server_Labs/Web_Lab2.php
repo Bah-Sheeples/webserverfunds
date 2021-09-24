@@ -11,7 +11,7 @@
     </h2>
     <body>
 
-        <form action="reponse_2_1.php" method="GET">
+        <form action="response_2_1.php" method="GET">
             <label for="fname" hidden>First Name:</label>
             <input type="text" id="fname" pattern="[A-Za-z0-9]" title="Letters Only" hidden>  
             <label for="lname" hidden>Last Name:</label>
