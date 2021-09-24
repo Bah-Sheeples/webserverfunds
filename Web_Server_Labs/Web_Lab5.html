@@ -7,7 +7,8 @@
 
     <p><?= var_dump($_SERVER) ?> </p>
     <div>
-        <?php echo $_SERVER['HTTP_USER_AGENT']; ?> 
+        <?= htmlspecialchars($_SERVER['HTTP_USER_AGENT']) ?> 
+
     </div>
 
 </body>
