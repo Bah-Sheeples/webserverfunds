@@ -19,4 +19,7 @@
         <p>Your favoured infantry sub-type is: <?= htmlspecialchars($_POST['type-infantry']) ?></p> 
     </body> 
 
+    <p><?= var_dump($_GET) ?></p>
+    <p><?= var_dump($_POST) ?></p>
+
 </html> 
