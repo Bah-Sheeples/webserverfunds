@@ -9,7 +9,7 @@
     </head> 
 
     <body>
-        <?php=
+        <?php
             $server = "localhost";
             $username = "php";
             $password = "A1f2i3r4e";
@@ -22,10 +22,11 @@
                 }
             echo "Connected successfully";
 
-            $sql = "INSERT INTO INFANTRY (inf_name, MP_VALUE, faction, type)
-                VALUES {htmlspecialchars($_POST['inf_name'])}, {htmlspecialchars($_POST['MP'])}, {htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])};";
+            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type)
+                VALUES '{htmlspecialchars($_POST['inf_name'])}', '{htmlspecialchars($_POST['MP'])}', '{htmlspecialchars($_POST['faction'])}', '{htmlspecialchars($_POST['type'])}';";
             $result = mysqli_query($conn, $sql);
-            echo "<p> {$result ? "Success!" : "Failure: " . mysqli_error($conn)} </p>"; 
+            echo <br>;
+            echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
         ?>
 
     </body> 
