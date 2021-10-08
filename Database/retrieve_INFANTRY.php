@@ -21,12 +21,14 @@
                 die("Connection failed: " . mysqli_connect_error());
                 }
             echo "Connected successfully";
+            echo "<br/>"
 
             $sql = "SELECT * FROM INFANTRY";
             $result = mysqli_query($conn, $sql);
 
             foreach($result as $row) {
-            echo "id:'{$row["id"]}' | Name: '{$row["name"]}' | MP_VALUE: {$row["MP_VALUE"]} | Faction: '{$row["faction"]}' | Type: '{$row["type"]}' '<br>'"; }
+                echo "id: {$row["id"]} | Name: {$row["name"]} | MP_VALUE: {$row["MP_VALUE"]} | Faction: {$row["faction"]} | Type: {$row["type"]} <br/>"; 
+            }
 
             //$sql = "select * from users where {htmlspecialchars($_POST['filter1'])}={htmlspecialchars($_POST['filter2'])}
 
