@@ -21,7 +21,7 @@
                 die("Connection failed: " . mysqli_connect_error());
                 }
             echo "Connected successfully";
-            echo "<br/>"
+            echo "<br/>";
 
             $sql = "SELECT * FROM INFANTRY";
             $result = mysqli_query($conn, $sql);
