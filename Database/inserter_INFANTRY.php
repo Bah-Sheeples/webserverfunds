@@ -31,15 +31,15 @@
             $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ({$inf_name}, {$MP}, {$faction}, {$type});";
             $result = mysqli_query($conn, $sql);
 
-            // echo "<br/>";
-            // echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
+            echo "<br/>";
+            echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
 
-            // $sql2 = "SELECT * FROM INFANTRY";
-            // $rez = mysqli_query($conn, $sql2);
+            $sql2 = "SELECT * FROM INFANTRY";
+            $rez = mysqli_query($conn, $sql2);
 
-            // foreach($rez as $row) {
-            //     echo "id: {$row["id"]} | Name: {$row["name"]} | MP_VALUE: {$row["MP_VALUE"]} | Faction: {$row["faction"]} | Type: {$row["type"]} <br/>"; 
-            // }
+            foreach($rez as $row) {
+                echo "id: {$row["id"]} | Name: {$row["name"]} | MP_VALUE: {$row["MP_VALUE"]} | Faction: {$row["faction"]} | Type: {$row["type"]} <br/>"; 
+            }
 
         ?>
 
