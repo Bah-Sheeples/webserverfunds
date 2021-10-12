@@ -23,11 +23,19 @@
             echo "<br/>";
 
             $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type)
-                VALUES {htmlspecialchars($_POST['inf_name'])}, {htmlspecialchars($_POST[MP])}', '{htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])};";
+                VALUES {htmlspecialchars($_POST['inf_name'])}, {htmlspecialchars($_POST[MP])}, {htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])};";
             $result = mysqli_query($conn, $sql);
 
             echo "<br/>";
             echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
+
+            $sql = "SELECT * FROM INFANTRY";
+            $result = mysqli_query($conn, $sql);
+
+            foreach($result as $row) {
+                echo "id: {$row["id"]} | Name: {$row["name"]} | MP_VALUE: {$row["MP_VALUE"]} | Faction: {$row["faction"]} | Type: {$row["type"]} <br/>"; 
+            }
+
         ?>
 
     </body> 
