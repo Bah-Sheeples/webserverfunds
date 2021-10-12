@@ -22,14 +22,14 @@
             echo "Connected successfully";
             echo "<br/>";
 
-            $inf_name=htmlspecialchars($_POST['inf_name']);
+            $inf_name=htmlspecialchars($_POST["inf_name"]);
+            $MP=htmlspecialchars($_POST["MP"]);
+            $faction=htmlspecialchars($_POST["faction"]);
+            $type=htmlspecialchars($_POST["type"]);
 
-            echo "value: {$inf_name}";
-            //$sql = "inf_name: {htmlspecialchars($_POST["inf_name"])}";
-            //echo $sql;
-            // "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ({htmlspecialchars($_POST['inf_name'])},{htmlspecialchars($_POST['MP'])}, {htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])});";
-            //$sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ({htmlspecialchars($_POST['inf_name'])}, {htmlspecial
-            // $result = mysqli_query($conn, $sql);
+        
+            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ({$inf_name}, {$MP}, {$faction}, {$type});";
+            $result = mysqli_query($conn, $sql);
 
             // echo "<br/>";
             // echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
