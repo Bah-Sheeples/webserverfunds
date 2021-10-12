@@ -32,7 +32,7 @@
             $result = mysqli_query($conn, $sql);
 
             echo "<br/>";
-            echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
+            echo "$result ? "Success!" : "Failure: " . mysqli_error($conn)"; 
 
             $sql2 = "SELECT * FROM INFANTRY";
             $rez = mysqli_query($conn, $sql2);
