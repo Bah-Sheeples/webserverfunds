@@ -23,7 +23,11 @@
             echo "Connected successfully";
             echo "<br/>";
 
-            $sql = "SELECT * FROM INFANTRY";
+            $inf_name=htmlspecialchars($_POST["inf_name"]);
+            $faction=htmlspecialchars($_POST["faction"]);
+            $type=htmlspecialchars($_POST["type"]);
+
+            $sql = "SELECT * FROM INFANTRY WHERE name=$infname, faction=$faction, type=$type;";
             $result = mysqli_query($conn, $sql);
 
             foreach($result as $row) {

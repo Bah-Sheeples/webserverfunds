@@ -7,15 +7,36 @@
 
     <body>
         <form action="retrieve_INFANTRY.php" method="POST">
-        
-        
-    
-
-
-
-        <p>
-            <input type="submit">
-        </p>
+            <p>
+                <label for="inf_name">Infantry Name:</label>
+                <input type="text" id="inf_name" name="inf_name" required>
+            </p>
+            <p>
+                <label for="faction">Choose faction:</label>
+                <select id="faction" name="faction">
+                <option value="*">All</option>
+                <option value="OST">OST</option>
+                <option value="OKW">OKW</option>
+                <option value="SOV">SOV</option>
+                <option value="USF">USF</option>
+                <option value="UKF">UKF</option>
+                </select>
+            </p>
+            <p>
+                <label for="type">Choose role:</label>
+                <select id="type" name="type">
+                <option value="*">All</option>
+                <option value="Generalist">Generalist</option>
+                <option value="Anti-Infantry">Anti-Infantry Infantry</option>
+                <option value="Anti-Tank">Anti-Tank Infantry</option>
+                <option value="Elite Generalist">Elite Generalist</option>
+                <option value="Elite Anti-Infantry">Elite Anti-Infantry</option>
+                <option value="Elite Anti-Tank">Elite Anti-Tank</option>
+                </select>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
         </form>
     </body>
 
