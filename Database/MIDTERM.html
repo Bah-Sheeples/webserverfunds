@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MIDTERM FORM</title>
+        <h1>Mid-term Form</h1>
+
+    <body>
+        <form action="MIDTERM_R.php" method="GET">
+            <p>Product:</br>
+                    <input type="radio" id="masks" name="prod" value="masks" required>
+                    <label for="masks">Masks</label></br>
+                    <input type="radio" id="visors" name="prod" value="visors" required>
+                    <label for="visors">Visors</label></br>
+                    <input type="radio" id="gowns" name="prod" value="gowns" required>
+                    <label for="gowns">Gowns</label></br>
+            </p>
+            <p>
+                <label for="num_items"># of items:</label>
+                <input type="text" id="num_items" name="num_items" pattern="[0-9]+" title="Numbers Only" required>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+    </body>
+    </head>
+</html>

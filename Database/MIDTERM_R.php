@@ -4,7 +4,7 @@
 
     <head> 
 
-        <title>Form </title> 
+        <title>Form: mid-term insert</title> 
 
     </head> 
 
@@ -23,14 +23,15 @@
             echo "Connected successfully";
             echo "<br/>";
 
-            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type)
-                VALUES {htmlspecialchars($_POST['inf_name'])}, {htmlspecialchars($_POST['MP'])}', '{htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])};";
+            $sql = "INSERT INTO Products (product_name, num_items)
+                VALUES {htmlspecialchars($_POST['prod'])}, {htmlspecialchars($_POST[num_items])}";
             $result = mysqli_query($conn, $sql);
 
             echo "<br/>";
-            echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}"; 
+            echo "{$result ? "Success!" : "Failure: " . mysqli_error($conn)}";
+
+            //$sql = "select * from users where {htmlspecialchars($_POST['filter1'])}={htmlspecialchars($_POST['filter2'])}
+
         ?>
-
-    </body> 
-
-</html> 
+    </body>
+<html>
