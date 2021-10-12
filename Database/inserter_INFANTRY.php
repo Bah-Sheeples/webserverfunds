@@ -28,7 +28,7 @@
             $type=htmlspecialchars($_POST["type"]);
 
         
-            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ({$inf_name}, {$MP}, {$faction}, {$type});";
+            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ('{$inf_name}', {$MP}, '{$faction}', '{$type}');";
             $result = mysqli_query($conn, $sql);
 
             echo "<br/>";
