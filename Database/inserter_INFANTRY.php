@@ -35,7 +35,7 @@
             echo $result ? "Success!" : "Failure: " . mysqli_error($conn); 
             echo "<br/>";
 
-            $sql2 = "SELECT * FROM INFANTRY";
+            $sql2 = "SELECT * FROM INFANTRY WHERE inf_name=$infname";
             $rez = mysqli_query($conn, $sql2);
 
             foreach($rez as $row) {
