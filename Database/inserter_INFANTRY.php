@@ -22,7 +22,7 @@
             echo "Connected successfully";
             echo "<br/>";
 
-            echo htmlspecialchars($_POST["inf_name"]);
+            echo 'value: {htmlspecialchars($_POST["inf_name"])}';
             //$sql = "inf_name: {htmlspecialchars($_POST["inf_name"])}";
             //echo $sql;
             // "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES ({htmlspecialchars($_POST['inf_name'])},{htmlspecialchars($_POST['MP'])}, {htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])});";
