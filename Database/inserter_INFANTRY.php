@@ -22,7 +22,7 @@
             echo "Connected successfully";
             echo "<br/>";
 
-            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES {htmlspecialchars($_POST['inf_name'])}, {htmlspecialchars($_POST['MP'])}, {htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])};";
+            $sql = "INSERT INTO INFANTRY (name, MP_VALUE, faction, type) VALUES {htmlspecialchars($_POST['inf_name'])}, {htmlspecialchars($_POST[MP])}, {htmlspecialchars($_POST['faction'])}, {htmlspecialchars($_POST['type'])}";
             $result = mysqli_query($conn, $sql);
 
             echo "<br/>";
