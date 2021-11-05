@@ -15,6 +15,9 @@
             function reveal() {
                 document.getElementById('hidden').style.display='block';
             }
+            function evilbook(){
+                document.getElementById('book').src='../Images/Evil Book.jpg'
+            }
             function ButtonName(elem) {
                 elem.innerHTML="Hello World";
             }
@@ -35,15 +38,24 @@
     </head>
     <body>
         <button type="button" onclick="hacker()">Click Me</button>
+      
         <p id=demo>Change Me!</p>
         <button type="button" onclick="change()">Change!</button>
+      
         <p></p>
         <p id="hidden" style="display:none">Ninja Text!</p>
         <button type="button" onclick="reveal()">Reveal Hidden</button>
         <button type="button" onclick="hide()">Hide Hidden</button>
+       
+        <p>
+        <img id=book src="../Images/tableofcontent.jpg" alt="good books" width="500" height="400">
+        </p>
+        <button type="button" onclick="evilbook()">Transform Book</button>
+
         <p>
             <button type="button" onclick="ButtonName(this)">Hah</button>
         </p>
+
         <p>
         <form>
             <label for=texton>Text Inside:*</label>
@@ -51,6 +63,7 @@
         </form>
         </p>
         <p id="result1">Default Text</p>
+
         <p id="read">Output Text:</p>
         <button type="button" onclick="openfile()">AJAX</button>
         
