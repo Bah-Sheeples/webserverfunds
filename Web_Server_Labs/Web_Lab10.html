@@ -15,6 +15,9 @@
             function reveal() {
                 document.getElementById('hidden').style.display='block';
             }
+            function ButtonName(elem) {
+                elem.innerHTML="Hello World";
+            }
         </script>
     </head>
     <body>
@@ -23,7 +26,10 @@
         <button type="button" onclick="change()">Change!</button>
         <p></p>
         <p id="hidden" style="display:none">Ninja Text!</p>
-        <button type="button" onclick="hide()">Reveal Hidden</button>
-        <button type="button" onclick="reveal()">Hide Hidden</button>
+        <button type="button" onclick="reveal()">Reveal Hidden</button>
+        <button type="button" onclick="hide()">Hide Hidden</button>
+        <p>
+            <button type="button" onclick="ButtonName(this)">Hah</button>
+        </p>
     </body>
 </html>
