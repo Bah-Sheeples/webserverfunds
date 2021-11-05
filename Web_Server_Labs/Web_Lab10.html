@@ -21,6 +21,12 @@
             function FormCheck(){
                 document.getElementById("result1").innerHTML="This field is required."
             }
+            function openfile(){
+
+                xhttp.open("GET", "Web_Lab2.php", true);
+                xhttp.send();
+            }
+
         </script>
     </head>
     <body>
@@ -37,9 +43,12 @@
         <p>
         <form>
             <label for=texton>Text Inside:*</label>
-            <input type=text id=texton onblur="FormCheck()">
+            <input type=text id=texton  onblur="FormCheck()" required>
         </form>
         </p>
         <p id="result1">Output Text</p>
+        <button type="button" onclick="openfile()">AJAX</button>
+        
+
     </body>
 </html>
