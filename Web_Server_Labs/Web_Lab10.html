@@ -9,11 +9,21 @@
             function change() {
                 document.getElementById("demo").innerHTML="HeL1o W0rLd";
             }
+            function hide() {
+                document.getElementById('hidden').style.display='none';
+            }
+            function reveal() {
+                document.getElementById('hidden').style.display='block';
+            }
         </script>
     </head>
     <body>
         <button type="button" onclick="hacker()">Click Me</button>
         <p id=demo>Change Me!</p>
         <button type="button" onclick="change()">Change!</button>
+        <p></p>
+        <p id="hidden" style="display:none">Ninja Text!</p>
+        <button type="button" onclick="hide()">Reveal Hidden</button>
+        <button type="button" onclick="reveal()">Hide Hidden</button>
     </body>
 </html>
