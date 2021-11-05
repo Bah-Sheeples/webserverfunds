@@ -6,11 +6,14 @@
             function hacker() {
             window.alert("Hacker Detected");   
             }
-            
+            function change() {
+                document.getElementById("demo").innerHTML="HeL1o W0rLd";
+            }
         </script>
     </head>
     <body>
         <button type="button" onclick="hacker()">Click Me</button>
-        
+        <p id=demo>Change Me!</p>
+        <button type="button" onclick="change()">Change!</button>
     </body>
 </html>
