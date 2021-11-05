@@ -23,8 +23,12 @@
             }
             function openfile(){
                 const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
                 xhttp.open("GET", "Web_Lab2.php", true);
                 xhttp.send();
+                
             }
 
         </script>
@@ -46,7 +50,8 @@
             <input type=text id=texton  onblur="FormCheck()" required>
         </form>
         </p>
-        <p id="result1">Output Text</p>
+        <p id="result1">Default Text</p>
+        <p id="read">Output Text:</p>
         <button type="button" onclick="openfile()">AJAX</button>
         
 
