@@ -12,7 +12,7 @@
         <?php
             $raw = `./bme280`;
             $deserialized = json_decode($raw);
-            echo "Current bme280 status -"
+            echo "Current bme280 status -";
             echo "Temperature: $deserialized->temperature"; 
             echo "Pressure: $deserialized->pressure"; 
             echo "Altitude: $deserialized->altitude";  
