@@ -38,11 +38,11 @@
             } elseif (isset($faction)) {
                 $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' type='$type'";
             } elseif (isset($faction,$type)) {
-                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name'"
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name'";
             } elseif (isset($type)) {
-                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction'"
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction'";
             } else {
-                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction' type='$type'"
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction' type='$type'";
             }
 
 
