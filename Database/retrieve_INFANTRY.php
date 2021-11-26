@@ -45,7 +45,7 @@
             //     $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction' type='$type'";
             // }
 
-            $sql = "SELECT * FROM INFANTRY WHERE faction='OKW'";
+            $sql = "SELECT * FROM INFANTRY;
             $result = mysqli_query($conn, $sql);
 
             foreach($result as $row) {
