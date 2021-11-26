@@ -27,7 +27,25 @@
             $faction=htmlspecialchars($_POST["faction"]);
             $type=htmlspecialchars($_POST["type"]);
 
-            $sql = "SELECT * FROM INFANTRY WHERE name=$infname, faction=$faction, type=$type;";
+            if ($inf_name == "" && isset($faction, $type)) {
+                $sql = "SELECT * FROM INFANTRY";
+            } elseif ($inf_name =="" && isset($type)) {
+                $sql = "SELECT * FROM INFANTRY WHERE type='$type'";
+            } elseif ($inf_name == "" && isset($faction)) {
+                $sql = "SELECT * FROM INFANTRY WHERE type='$type'";
+            } elseif ($inf_name == "") {
+                $sql = "SELECT * FROM INFANTRY WHERE faction='$faction' type='$type'";
+            } elseif (isset($faction)) {
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' type='$type'";
+            } elseif (isset($faction,$type)) {
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name'"
+            } elseif (isset($type)) {
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction'"
+            } else {
+                $sql = "SELECT * FROM INFANTRY WHERE name='$inf_name' faction='$faction' type='$type'"
+            }
+
+
             $result = mysqli_query($conn, $sql);
 
             foreach($result as $row) {
