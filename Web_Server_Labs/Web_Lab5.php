@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-    <head>Lab 5</head>
+    <head>
+    <div> <a href="../index.html">INDEX</a></li></div>    
+    Lab 5</head>
 
     <body>
 

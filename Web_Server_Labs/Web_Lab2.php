@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <div> <a href="../index.html">INDEX</a></li></div>
         <title>Forms for Web Lab 2</title>
     </head>
     <h1>

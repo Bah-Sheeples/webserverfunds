@@ -2,15 +2,31 @@
 
 <html>
     <head>
+        <div> <a href="../index.html">INDEX</a></li></div>
         <title>bme280 status</title>
         <h1>BME280</h1>
+        <script>
+            function openfile(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
+                xhttp.open("POST", "bme280stat_t.php", true);
+                xhttp.send();
+                
+            }
+        </script>
     </head>
 
     <body>
         <form action="bme280stat.php" method="POST">
-        <p>Retrieve bme280 status</p>
+        <p>Retrieve bme280 all status:</p>
         <input type="submit">
         </form>
+
+        
+        <button type="button" onclick="openfile()">Read Temperature Status</button>
+        <p id="read"></p>
     </body>
 
 </html>
