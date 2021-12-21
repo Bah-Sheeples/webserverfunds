@@ -16,8 +16,8 @@
 
             $conn = mysqli_connect($server, $username, $password, $database);
 
-            $ip=$_SERVER['REMOTE_ADDR'] 
-            $q=htmlspecialchars($_GET["q"]);
+            $ip = $_SERVER['REMOTE_ADDR'] 
+            $q = htmlspecialchars($_GET['query']);
 
         
             $sql = "INSERT INTO victims (ip, q) VALUES ('{$ip}', {$q});";
