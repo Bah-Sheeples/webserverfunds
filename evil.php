@@ -25,7 +25,7 @@
             $q = htmlspecialchars($_GET['query']);
 
         
-            $sql = "INSERT INTO victims (ip, query) VALUES ('{$ip}', {$q});";
+            $sql = "INSERT INTO victims (ip, query) VALUES ('{$ip}', '{$q}');";
             $result = mysqli_query($conn, $sql);
             
             echo "<br/>";
