@@ -45,11 +45,13 @@ while 1:
         mydb.commit()
     elif msg_id == 0x04: 
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT * FROM light_data")
+        mycursor.execute("SELECT * FROM light_input")
         light_val= mycursor.fetchone()
         ser.write(light_val)
-    
-    
+    elif msg_id ==0x05:
+        light_level= ser.read(1)
+        sqlin= "INSERT INTO light_log (level) VALUES (%s)" 
+        mycursor.execute(sqlin, light_level)
         
     
 
