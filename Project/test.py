@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
 ser = serial.Serial (
     port='/dev/ttyAMA0',
     baudrate = 2400,
-    parity=serial.PARITY_NONE
+    parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     byesize=serial.EIGHTBITS,
     timeout=1
@@ -50,7 +50,7 @@ while 1:
         ser.write(light_val)
     elif msg_id ==0x05:
         light_level= ser.read(1)
-        sqlin= "INSERT INTO light_log (level) VALUES (%s)" 
+        sqlin= "INSERT INTO light_log (level) VALUES (%d)" 
         mycursor.execute(sqlin, light_level)
         
     
