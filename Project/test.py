@@ -33,25 +33,25 @@ while 1:
         mycursor.execute(sqlsel,user_id)
         realpass_id=cursor.fetchone()
         if realpass_id == pass_id:
-            auth_user = 0x0A    #accepted
+            ser.write(0x0A)     #accepted
         else: 
-            auth_user = 0x0D    #denied
-        ser.write(auth_user)     
-    elif msg_id == 0x03:
-        today= date.today()
-        mycursor = mydb.cursor()
-        sqlin= "INSERT INTO ir_log (date) VALUES (%s)" 
-        mycursor.execute(sqlin, today)
-        mydb.commit()
-    elif msg_id == 0x04: 
-        mycursor = mydb.cursor()
-        mycursor.execute("SELECT * FROM light_input")
-        light_val= mycursor.fetchone()
-        ser.write(light_val)
-    elif msg_id ==0x05:
-        light_level= ser.read(1)
-        sqlin= "INSERT INTO light_log (level) VALUES (%d)" 
-        mycursor.execute(sqlin, light_level)
+            ser.write(0x0D)     #denied
+             
+    # elif msg_id == 0x03:
+    #     today= date.today()
+    #     mycursor = mydb.cursor()
+    #     sqlin= "INSERT INTO ir_log (date) VALUES (%s)" 
+    #     mycursor.execute(sqlin, today)
+    #     mydb.commit()
+    # elif msg_id == 0x04: 
+    #     mycursor = mydb.cursor()
+    #     mycursor.execute("SELECT * FROM light_input")
+    #     light_val= mycursor.fetchone()
+    #     ser.write(light_val)
+    # elif msg_id ==0x05:
+    #     light_level= ser.read(1)
+    #     sqlin= "INSERT INTO light_log (level) VALUES (%d)" 
+    #     mycursor.execute(sqlin, light_level)
         
     
 
