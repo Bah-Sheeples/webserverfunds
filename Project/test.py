@@ -29,12 +29,12 @@ while 1:
         user_id = ser.read(8)
         pass_id = ser.read(8)
         mycursor = mydb.cursor()
-        sqlsel = "SELECT * FROM users WHERE user = %s password =%s"
-        try:
-            mycursor.execute(sqlsel,user_id,pass_id)
+        sqlsel = "SELECT password FROM users WHERE (user = %s)"
+        mycursor.execute(sqlsel,user_id)
+        realpass_id=cursor.fetchone()
+        if realpass_id == pass_id:
             auth_user = 0x0A    #accepted
-            break
-        except: 
+        else: 
             auth_user = 0x0D    #denied
         ser.write(auth_user)     
     elif msg_id == 0x03:
