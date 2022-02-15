@@ -9,7 +9,7 @@ mydb = mysql.connector.connect(
     host="localhost",
     user="pi",
     password="A1f2i3r4e",
-    database="COH2UNIT"
+    database="PROJECT2022"
 )
 ser = serial.Serial (
     port='/dev/ttyAMA0',
