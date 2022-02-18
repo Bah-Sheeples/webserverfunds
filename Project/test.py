@@ -29,9 +29,10 @@ while 1:
         user_id = ser.read(8)
         pass_id = ser.read(8)
         mycursor = mydb.cursor()
-        sqlsel = "SELECT password FROM users WHERE (user = %s)"
-        mycursor.execute(sqlsel,user_id)
-        realpass_id=cursor.fetchone()
+        sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id
+        mycursor.execute(sqlsel)
+        tpass_id=cursor.fetchone()
+        realpass_id=tpass_id[0]
         if realpass_id == pass_id:
             ser.write(0x0A)     #accepted
         else: 
