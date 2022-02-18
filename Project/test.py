@@ -17,16 +17,16 @@ ser = serial.Serial (
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
-    timeout=1
 )
 
 light_val=0x0F
 
 while True: 
-    msg_id = ser.read(1)
-    if msg_id == 0x02:
-        user_id = ser.read(8)
-        pass_id = ser.read(8)
+    tmsg_id = ser.read()
+    msg_id=tmsg_id[0]
+    if msg_id == 2:
+        user_id = ser.readline()
+        pass_id = ser.readline()
         mycursor = mydb.cursor()
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id
         try:
