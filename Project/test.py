@@ -12,7 +12,7 @@ mydb = mysql.connector.connect(
     database="PROJECT2022"
 )
 ser = serial.Serial (
-    port='/dev/ttyAMA0',
+    port='/dev/serial0',
     baudrate = 2400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
@@ -22,21 +22,23 @@ ser = serial.Serial (
 
 light_val=0x0F
 
-while 1:
-
+while True: 
     msg_id = ser.read(1)
     if msg_id == 0x02:
         user_id = ser.read(8)
         pass_id = ser.read(8)
         mycursor = mydb.cursor()
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id
-        mycursor.execute(sqlsel)
-        tpass_id=cursor.fetchone()
-        realpass_id=tpass_id[0]
-        if realpass_id == pass_id:
-            ser.write(0x0A)     #accepted
-        else: 
-            ser.write(0x0D)     #denied
+        try:
+            mycursor.execute(sqlsel)
+            tpass_id=cursor.fetchone()
+            realpass_id=tpass_id[0]
+            if realpass_id == pass_id:
+                ser.write(0x0A)     #accepted
+            else: 
+                ser.write(0x0D)     #denied
+        except:
+            ser.write(0x0D)         #invalid username. Denied anyways.
              
     # elif msg_id == 0x03:
     #     today= date.today()
