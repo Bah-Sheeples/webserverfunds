@@ -19,7 +19,7 @@ ser = serial.Serial (
     bytesize=serial.EIGHTBITS,
 )
 
-light_val=0x0F
+
 
 while True: 
     tmsg_id = ser.read()
@@ -31,7 +31,7 @@ while True:
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id
         try:
             mycursor.execute(sqlsel)
-            tpass_id=cursor.fetchone()
+            tpass_id=mycursor.fetchone()
             realpass_id=tpass_id[0]
             if realpass_id == pass_id:
                 ser.write(0x0A)     #accepted
@@ -39,7 +39,7 @@ while True:
                 ser.write(0x0D)     #denied
         except:
             ser.write(0x0D)         #invalid username. Denied anyways.
-             
+# light_val=0x0F             
     # elif msg_id == 0x03:
     #     today= date.today()
     #     mycursor = mydb.cursor()
