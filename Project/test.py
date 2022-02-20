@@ -23,21 +23,21 @@ ser = serial.Serial (
 
 while True: 
     tmsg_id = ser.read()
-    msg_id=tmsg_id[0]
-    if msg_id == 2:
-        user_id = ser.readline()
-        pass_id = ser.readline()
+    msg_id=tmsg_id[0]   #value is stored in an array.
+    if msg_id == 2:     #Reading matrix data
+        user_id = ser.readline()    #Reading user ID. Terminated by NUL (0x00) character
+        pass_id = ser.readline()    #Reading Password
         mycursor = mydb.cursor()
-        sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id
-        try:
+        sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
+        try:    #first execute sqlsel
             mycursor.execute(sqlsel)
-            tpass_id=mycursor.fetchone()
-            realpass_id=tpass_id[0]
+            tpass_id=mycursor.fetchone()    #takes database value, and stores into an array.
+            realpass_id=tpass_id[0] 
             if realpass_id == pass_id:
                 ser.write(0x0A)     #accepted
             else: 
                 ser.write(0x0D)     #denied
-        except:
+        except:     #if user doesn't exist(aka error detected) try: 
             ser.write(0x0D)         #invalid username. Denied anyways.
 # light_val=0x0F             
     # elif msg_id == 0x03:
