@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
+import datetime
 import serial
 import time
 import mysql.connector
-from datetime import date
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -25,6 +25,7 @@ while True:
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an array.
     if msg_id == 2:     #Reading matrix data
+        ser.write(2)    #Ready to read
         user_id = ser.readline()    #Reading user ID. Terminated by NUL (0x00) character
         pass_id = ser.readline()    #Reading Password
         mycursor = mydb.cursor()
@@ -38,23 +39,26 @@ while True:
             else: 
                 ser.write(0x0D)     #denied
         except:     #if user doesn't exist(aka error detected) try: 
-            ser.write(0x0D)         #invalid username. Denied anyways.
-# light_val=0x0F             
-    # elif msg_id == 0x03:
-    #     today= date.today()
+            ser.write(0x0D)         #invalid username. Denied anyways.            
+    # elif msg_id == 0x03:    #IR Logs. 
+    #     now= datetime.now()
     #     mycursor = mydb.cursor()
     #     sqlin= "INSERT INTO ir_log (date) VALUES (%s)" 
-    #     mycursor.execute(sqlin, today)
+    #     mycursor.execute(sqlin, now)
     #     mydb.commit()
     # elif msg_id == 0x04: 
+    #     ser.write(2)    #Ready to read
     #     mycursor = mydb.cursor()
     #     mycursor.execute("SELECT * FROM light_input")
     #     light_val= mycursor.fetchone()
     #     ser.write(light_val)
-    # elif msg_id ==0x05:
-    #     light_level= ser.read(1)
-    #     sqlin= "INSERT INTO light_log (level) VALUES (%d)" 
-    #     mycursor.execute(sqlin, light_level)
+    elif msg_id ==0x05:     #Light Level Logs
+        ser.write(2)    #Ready to read
+        light_level= ser.read()
+        now= datetime.now()
+        a = light_level / 255
+        sqlin= "INSERT INTO light_log (level,time) VALUES (%d,%s)" 
+        mycursor.execute(sqlin, light_level,now)
         
     
 
