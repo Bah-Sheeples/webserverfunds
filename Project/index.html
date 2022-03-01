@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <div> <a href="../index.html">INDEX</a></li></div>
+        <title>HTML</title>
+        <script>
+            function openfile(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
+                xhttp.open("POST", "project.php");
+                xhttp.send();
+                
+            }
+        </script>
+    </head>
+
+
+
+    <body>
+        <form action="project.php" method="POST">
+            <p>
+                <label for="light">Lights:</label>
+                <select id="light" name="ligh">
+                <option value="ON">ON</option>
+                <option value="OFF">OFF</option>
+                </select>
+            </p>
+            <p>
+                <label for="motor">Drawer:</label>
+                <select id="motor" name="motor">
+                <option value="OPEN">OPEN</option>
+                <option value="CLOSE">CLOSE</option>
+                </select>
+            </p>
+            <input type="submit">
+            </form>
+    </body>
+
+</html>

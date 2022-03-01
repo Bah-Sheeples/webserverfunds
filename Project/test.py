@@ -4,6 +4,7 @@ import datetime
 import serial
 import time
 import mysql.connector
+import flask
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -20,8 +21,19 @@ ser = serial.Serial (
 )
 
 
-
 while True: 
+    mycursor = mydb.cursor()
+    sqla = "SELECT status FROM lights   
+    mycursor.execute(sqla)
+    tlights = mycursor.fetchone()
+    lights = tlights[0]
+    cursor.close()
+    sqlb = "SELECT status FROM motor   
+    mycursor.execute(sqlb)
+    tmotor = mycursor.fetchone()
+    motor = tmotor[0]
+    cursor.close()
+
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an array.
     if msg_id == 2:     #Reading matrix data
@@ -39,28 +51,33 @@ while True:
             else: 
                 ser.write(0x0D)     #denied
         except:     #if user doesn't exist(aka error detected) try: 
-            ser.write(0x0D)         #invalid username. Denied anyways.            
+            ser.write(0x0D)         #invalid username. Denied anyways.           
+        finally:
+            cursor.close()
     # elif msg_id == 0x03:    #IR Logs. 
-    #     now= datetime.now()
+    #     now= datetime.datetime.now()
     #     mycursor = mydb.cursor()
     #     sqlin= "INSERT INTO ir_log (date) VALUES (%s)" 
     #     mycursor.execute(sqlin, now)
     #     mydb.commit()
+        # cursor.close()
     # elif msg_id == 0x04: 
     #     ser.write(2)    #Ready to read
     #     mycursor = mydb.cursor()
     #     mycursor.execute("SELECT * FROM light_input")
     #     light_val= mycursor.fetchone()
     #     ser.write(light_val)
+        # cursor.close()
     elif msg_id ==0x05:     #Light Level Logs
         ser.write(2)    #Ready to read
         light_level= ser.read()
-        now= datetime.now()
-        a = light_level / 255
+        int_val = int.from_bytes(light_level,"little")
+        now= datetime.datetime.now()
+        a = int_val / 255
         sqlin= "INSERT INTO light_log (level,time) VALUES (%d,%s)" 
         mycursor.execute(sqlin, light_level,now)
-        
-    
+        cursor.close()
+
 
 
 # try,except, finally
