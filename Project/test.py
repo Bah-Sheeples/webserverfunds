@@ -18,24 +18,12 @@ ser = serial.Serial (
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
+    timeout=10,
 )
 x=1
 y=1
 
 while True: 
-    ser.write(0)
-    mycursor = mydb.cursor()
-    sqla = "SELECT status FROM lights"
-    mycursor.execute(sqla)
-    tlights = mycursor.fetchone()
-    set_light = tlights[0]
-    sqlb = "SELECT status FROM motor"
-    mycursor.execute(sqlb)
-    tmotor = mycursor.fetchone()
-    set_motor = tmotor[0]
-    mycursor.close()
-    tmsg_id = ser.read()
-    msg_id=tmsg_id[0]   #value is stored in an array.
     print("Reading Message ID:")
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
