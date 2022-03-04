@@ -36,7 +36,7 @@ while True:
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an array.
     print("Reading Message ID:")
-    print(msg_ID)
+    print(msg_id)
     if msg_id == 2:     #Reading matrix data
         ser.write(2)    #Ready to read
         user_id = ser.readline()    #Reading user ID. Terminated by NUL (0x00) character
