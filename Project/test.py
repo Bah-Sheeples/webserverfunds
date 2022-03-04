@@ -65,7 +65,7 @@ while True:
             IR_LOG.write(now)
             IR_LOG.write("\n")
             IR_LOG.close()
-            x+=255
+            x+=10000
         
     # elif msg_id == 0x04: 
     #     ser.write(2)    #Ready to read
@@ -83,7 +83,7 @@ while True:
             int_val = int.from_bytes(light_level,"little")
             now1= datetime.datetime.now()
             now = str(now1)
-            a = str(int_val / 255)
+            a = str(int_val/100)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
@@ -91,7 +91,7 @@ while True:
             lightfile.write(now)
             lightfile.write("\n")
             lightfile.close()
-            y+=255
+            y+=10000
         
 
 
