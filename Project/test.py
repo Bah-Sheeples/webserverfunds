@@ -41,6 +41,7 @@ while True:
         ser.write(2)    #Ready to read
         user_id = ser.readline()    #Reading user ID. Terminated by NUL (0x00) character
         pass_id = ser.readline()    #Reading Password
+        print("Matrix")
         mycursor = mydb.cursor()
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
         try:    #first execute sqlsel
@@ -76,6 +77,7 @@ while True:
     elif msg_id ==0x05:     #Light Level Logs
         y-=1
         if y==0:
+            print("Light Log")
             ser.write(2)    #Ready to read
             light_level= ser.read()
             int_val = int.from_bytes(light_level,"little")
