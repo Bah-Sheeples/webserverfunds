@@ -24,12 +24,12 @@ y=0
 
 while True: 
     mycursor = mydb.cursor()
-    sqla = "SELECT status FROM lights   
+    sqla = "SELECT status FROM lights"
     mycursor.execute(sqla)
     tlights = mycursor.fetchone()
     set_light = tlights[0]
     cursor.close()
-    sqlb = "SELECT status FROM motor   
+    sqlb = "SELECT status FROM motor"
     mycursor.execute(sqlb)
     tmotor = mycursor.fetchone()
     set_motor = tmotor[0]
