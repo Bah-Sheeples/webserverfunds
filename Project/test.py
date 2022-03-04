@@ -40,7 +40,7 @@ while True:
     print("Reading Message ID:")
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
-        # ser.write(2)    #Ready to read
+        ser.write(2)    #Ready to read
         user_id = ser.readline()    #Reading user ID. Terminated by NUL (0x00) character
         pass_id = ser.readline()    #Reading Password
         print("Matrix")
@@ -80,7 +80,7 @@ while True:
         y-=1
         if y==0:
             print("Light Log")
-            # ser.write(2)    #Ready to read
+            ser.write(2)    #Ready to read
             light_level= ser.read()
             int_val = int.from_bytes(light_level,"little")
             now1= datetime.datetime.now()
