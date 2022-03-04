@@ -28,12 +28,12 @@ while True:
     mycursor.execute(sqla)
     tlights = mycursor.fetchone()
     set_light = tlights[0]
-    cursor.close()
+    mycursor.close()
     sqlb = "SELECT status FROM motor"
     mycursor.execute(sqlb)
     tmotor = mycursor.fetchone()
     set_motor = tmotor[0]
-    cursor.close()
+    mycursor.close()
 
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an array.
@@ -54,7 +54,7 @@ while True:
         except:     #if user doesn't exist(aka error detected) try: 
             ser.write(0x0D)         #invalid username. Denied anyways.           
         finally:
-            cursor.close()
+            mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
         x-=1
         if x==0:
@@ -72,7 +72,7 @@ while True:
     #     mycursor.execute("SELECT * FROM light_input")
     #     light_val= mycursor.fetchone()
     #     ser.write(light_val)
-        # cursor.close()
+        # mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
         y-=1
         if y==0:
