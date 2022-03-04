@@ -23,6 +23,7 @@ x=1
 y=1
 
 while True: 
+    ser.write(0)
     mycursor = mydb.cursor()
     sqla = "SELECT status FROM lights"
     mycursor.execute(sqla)
