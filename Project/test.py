@@ -17,8 +17,7 @@ ser = serial.Serial (
     baudrate = 2400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=1,
+    bytesize=serial.EIGHTBITS
 )
 x=1
 y=1
@@ -37,8 +36,7 @@ while True:
     mycursor.close()
     ser.write(0x01)
     tmsg_id = ser.read()
-    msg_id = tmsg_id.decode('utf-8')
-#    msg_id=tmsg_id[0]   #value is stored in an array.
+    msg_id=tmsg_id[0]   #value is stored in an array.
     print("Reading Message ID:")
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
