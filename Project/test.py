@@ -28,7 +28,6 @@ while True:
     mycursor.execute(sqla)
     tlights = mycursor.fetchone()
     set_light = tlights[0]
-    mycursor.close()
     sqlb = "SELECT status FROM motor"
     mycursor.execute(sqlb)
     tmotor = mycursor.fetchone()
