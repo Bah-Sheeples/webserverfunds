@@ -82,7 +82,7 @@ while True:
             light_level= ser.read()
             int_val = int.from_bytes(light_level,"little")
             now= datetime.datetime.now()
-            a = int_val / 255
+            a = str(int_val / 255)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
