@@ -19,19 +19,20 @@ ser = serial.Serial (
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
 )
-
+x=0
+y=0
 
 while True: 
     mycursor = mydb.cursor()
     sqla = "SELECT status FROM lights   
     mycursor.execute(sqla)
     tlights = mycursor.fetchone()
-    lights = tlights[0]
+    set_light = tlights[0]
     cursor.close()
     sqlb = "SELECT status FROM motor   
     mycursor.execute(sqlb)
     tmotor = mycursor.fetchone()
-    motor = tmotor[0]
+    set_motor = tmotor[0]
     cursor.close()
 
     tmsg_id = ser.read()
@@ -54,13 +55,17 @@ while True:
             ser.write(0x0D)         #invalid username. Denied anyways.           
         finally:
             cursor.close()
-    # elif msg_id == 0x03:    #IR Logs. 
-    #     now= datetime.datetime.now()
-    #     mycursor = mydb.cursor()
-    #     sqlin= "INSERT INTO ir_log (date) VALUES (%s)" 
-    #     mycursor.execute(sqlin, now)
-    #     mydb.commit()
-        # cursor.close()
+    elif msg_id == 0x03:    #IR Logs. 
+        x-=1
+        if x==0:
+            now= datetime.datetime.now()
+            IR_LOG = open('IR_LOG.txt','a')
+            IR_LOG.write("IR Sensor Tripped: ")
+            IR_LOG.write(now)
+            IR_LOG.write("\n")
+            IR_LOG.close()
+            x+=255
+        
     # elif msg_id == 0x04: 
     #     ser.write(2)    #Ready to read
     #     mycursor = mydb.cursor()
@@ -69,14 +74,22 @@ while True:
     #     ser.write(light_val)
         # cursor.close()
     elif msg_id ==0x05:     #Light Level Logs
-        ser.write(2)    #Ready to read
-        light_level= ser.read()
-        int_val = int.from_bytes(light_level,"little")
-        now= datetime.datetime.now()
-        a = int_val / 255
-        sqlin= "INSERT INTO light_log (level,time) VALUES (%d,%s)" 
-        mycursor.execute(sqlin, light_level,now)
-        cursor.close()
+        y-=1
+        if y==0:
+            ser.write(2)    #Ready to read
+            light_level= ser.read()
+            int_val = int.from_bytes(light_level,"little")
+            now= datetime.datetime.now()
+            a = int_val / 255
+            lightfile = open('Light_Level.txt','a')
+            lightfile.write("Light Level: ")
+            lightfile.write(a)
+            lightfile.write(", Time:")
+            lightfile.write(now)
+            lightfile.write("\n")
+            lightfile.close()
+            y+=255
+        
 
 
 
