@@ -19,8 +19,8 @@ ser = serial.Serial (
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
 )
-x=0
-y=0
+x=1
+y=1
 
 while True: 
     mycursor = mydb.cursor()
