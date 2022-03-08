@@ -69,17 +69,18 @@ while True:
         y-=1
         if y==0:
             print("Light Log")
-            ser.write(2)    #Ready to read
-            ser.write(2)
-            ser.write(2)
-            ser.write(2)
-            ser.write(2)
-            ser.write(2)
+            ser.write("2")    #Ready to read
+            ser.write("2")
+            ser.write("2")
+            ser.write("2")
+            ser.write("2")
+            ser.write("2")
             light_level= ser.read(1)
             int_val = int.from_bytes(light_level,"big")
             now1= datetime.datetime.now()
             now = str(now1)
             a = str(int_val)
+            print(a)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
