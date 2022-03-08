@@ -67,12 +67,8 @@ while True:
         # mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
         print("Light Log")
+        time.sleep(0.001)
         ser.write(0x02)    #Ready to read
-        ser.write(0x02)
-        ser.write(0x02)
-        ser.write(0x02)
-        ser.write(0x02)
-        ser.write(0x02)
         light_level= ser.read(1)
         int_val = int.from_bytes(light_level,"big")
         now1= datetime.datetime.now()
