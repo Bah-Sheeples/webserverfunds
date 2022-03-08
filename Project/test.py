@@ -69,12 +69,12 @@ while True:
         y-=1
         if y==0:
             print("Light Log")
-            ser.write("2".encode())    #Ready to read
-            ser.write("2".encode())
-            ser.write("2".encode())
-            ser.write("2".encode())
-            ser.write("2".encode())
-            ser.write("2".encode())
+            ser.write(0x02)    #Ready to read
+            ser.write(2)
+            ser.write(2)
+            ser.write(2)
+            ser.write(2)
+            ser.write(2)
             light_level= ser.read(1)
             int_val = int.from_bytes(light_level,"big")
             now1= datetime.datetime.now()
