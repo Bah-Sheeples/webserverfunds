@@ -87,7 +87,7 @@ while True:
             lightfile.write(now)
             lightfile.write("\n")
             lightfile.close()
-            y+=10000
+            y+=100
         
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
