@@ -20,7 +20,7 @@ ser = serial.Serial (
     bytesize=serial.EIGHTBITS
 )
 x=1
-y=1
+y=0
 
 while True: 
     # ser.write(0x01)
@@ -66,29 +66,26 @@ while True:
     #     ser.write(light_val)
         # mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
-        y-=1
-        if y==0:
-            print("Light Log")
-            ser.write(0x02)    #Ready to read
-            ser.write(2)
-            ser.write(2)
-            ser.write(2)
-            ser.write(2)
-            ser.write(2)
-            light_level= ser.read(1)
-            int_val = int.from_bytes(light_level,"big")
-            now1= datetime.datetime.now()
-            now = str(now1)
-            a = str(int_val)
-            print(a)
-            lightfile = open('Light_Level.txt','a')
-            lightfile.write("Light Level: ")
-            lightfile.write(a)
-            lightfile.write(", Time:")
-            lightfile.write(now)
-            lightfile.write("\n")
-            lightfile.close()
-            y+=100
+        print("Light Log")
+        ser.write(0x02)    #Ready to read
+        ser.write(0x02)
+        ser.write(0x02)
+        ser.write(0x02)
+        ser.write(0x02)
+        ser.write(0x02)
+        light_level= ser.read(1)
+        int_val = int.from_bytes(light_level,"big")
+        now1= datetime.datetime.now()
+        now = str(now1)
+        a = str(int_val)
+        print(a)
+        lightfile = open('Light_Level.txt','a')
+        lightfile.write("Light Level: ")
+        lightfile.write(a)
+        lightfile.write(", Time:")
+        lightfile.write(now)
+        lightfile.write("\n")
+        lightfile.close()
         
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
