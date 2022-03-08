@@ -9,5 +9,6 @@ ser = serial.Serial (
     timeout=1
 )
 
-test=ser.read(1)
-print("Test: %s", test)
+ser.write(0x0F)
+ser.write(0xF0)
+ser.write(0xE0)
