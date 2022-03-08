@@ -79,7 +79,7 @@ while True:
             int_val = int.from_bytes(light_level,"big")
             now1= datetime.datetime.now()
             now = str(now1)
-            a = str(int_val/100)
+            a = str(int_val)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
