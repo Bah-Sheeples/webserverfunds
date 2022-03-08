@@ -23,17 +23,6 @@ x=1
 y=1
 
 while True: 
-    
-    mycursor = mydb.cursor()
-    sqla = "SELECT status FROM lights"
-    mycursor.execute(sqla)
-    tlights = mycursor.fetchone()
-    set_light = tlights[0]
-    sqlb = "SELECT status FROM motor"
-    mycursor.execute(sqlb)
-    tmotor = mycursor.fetchone()
-    set_motor = tmotor[0]
-    mycursor.close()
     # ser.write(0x01)
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an array.
@@ -81,6 +70,11 @@ while True:
         if y==0:
             print("Light Log")
             ser.write(2)    #Ready to read
+            ser.write(2)
+            ser.write(2)
+            ser.write(2)
+            ser.write(2)
+            ser.write(2)
             light_level= ser.read()
             int_val = int.from_bytes(light_level,"little")
             now1= datetime.datetime.now()
@@ -95,7 +89,16 @@ while True:
             lightfile.close()
             y+=10000
         
-
+    # mycursor = mydb.cursor()
+    # sqla = "SELECT status FROM lights"
+    # mycursor.execute(sqla)
+    # tlights = mycursor.fetchone()
+    # set_light = tlights[0]
+    # sqlb = "SELECT status FROM motor"
+    # mycursor.execute(sqlb)
+    # tmotor = mycursor.fetchone()
+    # set_motor = tmotor[0]
+    # mycursor.close()
 
 
 # try,except, finally
