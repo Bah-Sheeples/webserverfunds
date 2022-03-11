@@ -10,4 +10,4 @@ ser = serial.Serial (
 )
 
 while True:
-    ser.write(0x55)
+    ser.write("\x55")
