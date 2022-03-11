@@ -40,11 +40,11 @@ while True:
             tpass_id=mycursor.fetchone()    #takes database value, and stores into an array.
             realpass_id=tpass_id[0] 
             if realpass_id == pass_id:
-                ser.write(0x0A)     #accepted
+                ser.write(b"\x0A")     #accepted
             else: 
-                ser.write(0x0D)     #denied
+                ser.write(b"\x0D")     #denied
         except:     #if user doesn't exist(aka error detected) try: 
-            ser.write(0x0D)         #invalid username. Denied anyways.           
+            ser.write(b"\x0D")         #invalid username. Denied anyways.           
         finally:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
