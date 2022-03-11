@@ -10,4 +10,4 @@ ser = serial.Serial (
 )
 
 while True:
-    ser.write(2)
+    ser.write(b"2")
