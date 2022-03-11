@@ -9,5 +9,5 @@ ser = serial.Serial (
     bytesize=serial.EIGHTBITS,
 )
 
-while True
+while True:
     ser.write(0x9D)
