@@ -13,14 +13,14 @@ mydb = mysql.connector.connect(
     database="PROJECT2022"
 )
 ser = serial.Serial (
-    port='/dev/serial0',
+    port='/dev/ttyUSB0',
     baudrate = 2400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS
 )
 x=1
-y=0
+y=1
 
 while True: 
     # ser.write(0x01)
@@ -48,21 +48,19 @@ while True:
         finally:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
-        x-=1
-        if x==0:
-            now= datetime.datetime.now()
-            IR_LOG = open('IR_LOG.txt','a')
-            IR_LOG.write("IR Sensor Tripped: ")
-            IR_LOG.write(now)
-            IR_LOG.write("\n")
-            IR_LOG.close()
-            x+=10000
+        now= datetime.datetime.now()
+        IR_LOG = open('IR_LOG.txt','a')
+        IR_LOG.write("IR Sensor Tripped: ")
+        IR_LOG.write(now)
+        IR_LOG.write("\n")
+        IR_LOG.close()
         
-    # elif msg_id == 0x04: 
+    # elif msg_id == 0x04: #Light Set. 
     #     ser.write(2)    #Ready to read
     #     mycursor = mydb.cursor()
     #     mycursor.execute("SELECT * FROM light_input")
-    #     light_val= mycursor.fetchone()
+    #     light_valt= mycursor.fetchone()
+        # light_val= light_valt[0]
     #     ser.write(light_val)
         # mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
@@ -70,18 +68,21 @@ while True:
         time.sleep(1)
         ser.write(0x02)    #Ready to read
         light_level= ser.read(1)
-        int_val = int.from_bytes(light_level,"big")
-        now1= datetime.datetime.now()
-        now = str(now1)
-        a = str(int_val)
-        print(a)
-        lightfile = open('Light_Level.txt','a')
-        lightfile.write("Light Level: ")
-        lightfile.write(a)
-        lightfile.write(", Time:")
-        lightfile.write(now)
-        lightfile.write("\n")
-        lightfile.close()
+        y-=1
+        if y==0:
+            int_val = int.from_bytes(light_level,"big")
+            now1= datetime.datetime.now()
+            now = str(now1)
+            a = str(int_val)
+            print(a)
+            lightfile = open('Light_Level.txt','a')
+            lightfile.write("Light Level: ")
+            lightfile.write(a)
+            lightfile.write(", Time:")
+            lightfile.write(now)
+            lightfile.write("\n")
+            lightfile.close()
+            y+=50
         
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
