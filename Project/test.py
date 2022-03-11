@@ -25,6 +25,7 @@ y=1
 while True: 
     # ser.write(0x01)
     tmsg_id = ser.read()
+    print(tmsg_id)
     msg_id=tmsg_id[0]   #value is stored in an array.
     print("Reading Message ID:")
     print(msg_id)
