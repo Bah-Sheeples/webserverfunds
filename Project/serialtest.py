@@ -6,7 +6,7 @@ ser = serial.Serial (
     baudrate = 2400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
+    bytesize=serial.EIGHTBITS
 )
 
 while True:
