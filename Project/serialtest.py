@@ -11,3 +11,5 @@ ser = serial.Serial (
 
 while True:
     ser.write(b"2")
+    break
+print("Done")
