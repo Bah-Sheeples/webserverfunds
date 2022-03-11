@@ -24,10 +24,10 @@ y=1
 
 while True: 
     # ser.write(0x01)
+    print("Reading Message ID:")
     tmsg_id = ser.read()
     print(tmsg_id)
     msg_id=tmsg_id[0]   #value is stored in an array.
-    print("Reading Message ID:")
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
         ser.write(2)    #Ready to read
