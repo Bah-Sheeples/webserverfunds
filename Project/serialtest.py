@@ -9,7 +9,10 @@ ser = serial.Serial (
     bytesize=serial.EIGHTBITS
 )
 
+x=0
 while True:
     ser.write(b"2")
-    break
+    x+=1
+    if x==5
+        break
 print("Done")
