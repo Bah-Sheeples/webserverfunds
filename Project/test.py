@@ -66,7 +66,6 @@ while True:
         # mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
         print("Light Log")
-        time.sleep(1)
         ser.write(b"\x02")    #Ready to read
         light_level= ser.read(1)
         y-=1
