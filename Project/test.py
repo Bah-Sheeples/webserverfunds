@@ -30,7 +30,7 @@ while True:
     msg_id=tmsg_id[0]   #value is stored in an array.
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
-        ser.write(2)    #Ready to read
+        ser.write(b"\x02")    #Ready to read
         user_id = ser.readline()    #Reading user ID. Terminated by NUL (0x00) character
         pass_id = ser.readline()    #Reading Password
         print("Matrix")
@@ -67,7 +67,7 @@ while True:
     elif msg_id ==0x05:     #Light Level Logs
         print("Light Log")
         time.sleep(1)
-        ser.write(0x02)    #Ready to read
+        ser.write(b"\x02")    #Ready to read
         light_level= ser.read(1)
         y-=1
         if y==0:
