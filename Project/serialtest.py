@@ -11,8 +11,8 @@ ser = serial.Serial (
 
 x=0
 while True:
-    ser.write(b"2")
+    ser.write(b"\x02")
     x+=1
-    if x==5
+    if x==5:
         break
 print("Done")
