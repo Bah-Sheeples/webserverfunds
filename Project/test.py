@@ -49,7 +49,8 @@ while True:
         finally:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
-        now= datetime.datetime.now()
+        now1= datetime.datetime.now()
+        now = str(now1)
         IR_LOG = open('IR_LOG.txt','a')
         IR_LOG.write("IR Sensor Tripped: ")
         IR_LOG.write(now)
