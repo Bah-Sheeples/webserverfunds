@@ -31,8 +31,10 @@ while True:
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
         ser.write(b"\x02")    #Ready to read
-        user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x00) character
-        pass_id = ser.read_until(b'\x0A')    #Reading Password
+        b_user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x00) character
+        b_pass_id = ser.read_until(b'\x0A')    #Reading Password
+        user_id = str(b_user_id)
+        pass_id = str(b_pass_id)
         print("Matrix:")
         print("User = %s",user_id)
         print("Pass = %s",pass_id)
