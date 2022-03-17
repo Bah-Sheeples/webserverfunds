@@ -31,10 +31,10 @@ while True:
     print(msg_id)
     if msg_id == 2:     #Reading matrix data
         ser.write(b"\x02")    #Ready to read
-        b_user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x00) character
-        b_pass_id = ser.read_until(b'\x0A')    #Reading Password
-        user_id = str(b_user_id)
-        pass_id = str(b_pass_id)
+        user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x00) character
+        pass_id = ser.read_until(b'\x0A')    #Reading Password
+        str(user_id,"utf-8")
+        str(pass_id,"utf-8")
         print("Matrix:")
         print("User = %s",user_id)
         print("Pass = %s",pass_id)
@@ -79,7 +79,7 @@ while True:
             now1= datetime.datetime.now()
             now = str(now1)
             a = str(int_val)
-            print(a)
+            print("level",a)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
