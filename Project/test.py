@@ -43,9 +43,10 @@ while True:
         print("Pass = ",pass_id)
         print(pass_id)
         mycursor = mydb.cursor()
-        sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
+        sqlsel = "SELECT password FROM users WHERE (user = '%s');"%user_id   #Select Database for user==user_id
         print(sqlsel)
         try:    #first execute sqlsel
+            print("try succeeded")
             mycursor.execute(sqlsel)
             tpass_id=mycursor.fetchone()    #takes database value, and stores into an array.
             realpass_id=tpass_id[0] 
