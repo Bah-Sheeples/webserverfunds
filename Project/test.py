@@ -38,16 +38,19 @@ while True:
         # str(user_id,"utf-8")
         # str(pass_id,"utf-8")
         print("Matrix:")
-        print("User = %s",user_id)
+        print("User = ",user_id)
         print(user_id)
-        print("Pass = %s",pass_id)
+        print("Pass = ",pass_id)
         print(pass_id)
         mycursor = mydb.cursor()
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
+        print(sqlsel)
         try:    #first execute sqlsel
             mycursor.execute(sqlsel)
             tpass_id=mycursor.fetchone()    #takes database value, and stores into an array.
             realpass_id=tpass_id[0] 
+            print("Database Password")
+            print(realpass_id)
             if realpass_id == pass_id:
                 ser.write(b"\x01")     #accepted
             else: 
