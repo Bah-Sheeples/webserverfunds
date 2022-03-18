@@ -52,6 +52,7 @@ while True:
             ser.write(b"\x02")         #invalid username. Denied anyways.           
         finally:
             mycursor.close()
+            break   #remove.
     elif msg_id == 0x03:    #IR Logs. 
         now1= datetime.datetime.now()
         now = str(now1)
