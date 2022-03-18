@@ -33,6 +33,8 @@ while True:
         ser.write(b"\x02")    #Ready to read
         user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x0A) character
         pass_id = ser.read_until(b'\x0A')    #Reading Password
+        user_id = user_id.rstrip("\n")       #remove trailer
+        pass_id = pass_id.rstrip("\n")  
         user_id = user_id.decode('UTF-8')
         pass_id = pass_id.decode('UTF-8')
         str(user_id)
