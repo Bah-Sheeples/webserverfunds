@@ -49,7 +49,8 @@ while True:
             print("try executing")
             mycursor.execute(sqlsel)
             print("cursor success")
-            tpass_id=mycursor.fetchone()    #takes database value, and stores into an array.
+            print(mycursor)
+            tpass_id=mycursor.fetchall()    #takes database value, and stores into an array.
             realpass_id=tpass_id[0] 
             print("Database Password: ",realpass_id)
             if realpass_id == pass_id:
