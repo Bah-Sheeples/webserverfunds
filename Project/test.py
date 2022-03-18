@@ -49,9 +49,10 @@ while True:
             print("try executing")
             mycursor.execute(sqlsel)
             print("cursor success")
-            print(mycursor)
-            tpass_id=mycursor.fetchall()    #takes database value, and stores into an array.
-            realpass_id=tpass_id[0] 
+            tpass_id = mycursor.fetchall()    #takes database value, and stores into an array.
+            print(tpass_id)
+            realpass_id=tpass_id
+            print(realpass_id)
             print("Database Password: ",realpass_id)
             if realpass_id == pass_id:
                 ser.write(b"\x01")     #accepted
