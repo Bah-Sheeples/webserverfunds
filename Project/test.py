@@ -39,7 +39,9 @@ while True:
         # str(pass_id,"utf-8")
         print("Matrix:")
         print("User = %s",user_id)
+        print(user_id)
         print("Pass = %s",pass_id)
+        print(pass_id)
         mycursor = mydb.cursor()
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
         try:    #first execute sqlsel
