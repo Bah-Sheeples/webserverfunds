@@ -43,15 +43,15 @@ while True:
         print("Pass = ",pass_id)
         print(pass_id)
         mycursor = mydb.cursor()
-        sqlsel = "SELECT password FROM users WHERE (user = '%s');"%user_id   #Select Database for user==user_id
+        sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
         print(sqlsel)
         try:    #first execute sqlsel
-            print("try succeeded")
+            print("try executing")
             mycursor.execute(sqlsel)
+            print("cursor success")
             tpass_id=mycursor.fetchone()    #takes database value, and stores into an array.
             realpass_id=tpass_id[0] 
-            print("Database Password")
-            print(realpass_id)
+            print("Database Password: ",realpass_id)
             if realpass_id == pass_id:
                 ser.write(b"\x01")     #accepted
             else: 
@@ -79,7 +79,6 @@ while True:
     #     ser.write(light_val)
         # mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
-        print("Light Log")
         ser.write(b"\x02")    #Ready to read
         light_level= ser.read(1)
         y-=1
