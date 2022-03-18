@@ -76,15 +76,14 @@ while True:
         y-=1
         if y==0:
             int_val = int.from_bytes(light_level,"big")
-            light1 = int_val / 255
             now1= datetime.datetime.now()
             now = str(now1)
-            a = str(light1)
+            a = str(int_val)
             print("level: %s",a)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
-            lightfile.write("%, Time:")
+            lightfile.write(" / 255, Time:")
             lightfile.write(now)
             lightfile.write("\n")
             lightfile.close()
