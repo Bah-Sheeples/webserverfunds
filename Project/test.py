@@ -35,8 +35,8 @@ while True:
         pass_id = ser.read_until(b'\x0A')    #Reading Password
         user_id = user_id.decode('UTF-8')
         pass_id = pass_id.decode('UTF-8')
-        # str(user_id,"utf-8")
-        # str(pass_id,"utf-8")
+        str(user_id)
+        str(pass_id)
         print("Matrix:")
         print("User = ",user_id)
         print(user_id)
@@ -51,14 +51,17 @@ while True:
             print("cursor success")
             tpass_id = mycursor.fetchall()    #takes database value, and stores into an array.
             print(tpass_id)
-            realpass_id=tpass_id
+            realpass_id=tpass_id[0]
             print(realpass_id)
             print("Database Password: ",realpass_id)
             if realpass_id == pass_id:
+                ("try but success")
                 ser.write(b"\x01")     #accepted
             else: 
+                print("try but failed")
                 ser.write(b"\x02")     #denied
         except:     #if user doesn't exist(aka error detected) try: 
+            print("try failed.")
             ser.write(b"\x02")         #invalid username. Denied anyways.           
         finally:
             mycursor.close()
