@@ -55,7 +55,7 @@ while True:
             print(tpass_id)
             realpass_id=tpass_id[0]
             print(realpass_id)
-            realpass_id=realpass_id.strip("('),")
+            realpass_id=realpass_id[0]
             print(realpass_id)
             print("Database Password: ",realpass_id)
             if realpass_id == pass_id:
