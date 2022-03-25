@@ -4,7 +4,7 @@
 
     <head> 
 
-        <title>Form: insert</title> 
+        <title><a href="../index.html">Back to Main page</a></title> 
     </head> 
 
     <body>

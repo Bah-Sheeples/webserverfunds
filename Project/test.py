@@ -75,7 +75,7 @@ while True:
         pass_id = pass_id.decode('UTF-8')
         user_id = user_id.rstrip("\n")       #remove trailer
         pass_id = pass_id.rstrip("\n")  
-        str(user_id)    #these might be redundant. 
+        str(user_id)    #these might be redundant, but the code works. 
         str(pass_id)
         print("Matrix:")
         print("User = ",user_id)
@@ -107,7 +107,6 @@ while True:
             ser.write(b"\x02")         #invalid username. Denied anyways.           
         finally:
             mycursor.close()
-            break   #remove.
     elif msg_id == 0x03:    #IR Logs. 
         now1= datetime.datetime.now()
         now = str(now1)
