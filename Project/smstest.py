@@ -51,5 +51,5 @@ if __name__ == "__main__":
     main()
 
 
-#reference:
-# https://www.pragmaticlinux.com/2021/02/how-to-send-an-sms-message-using-python/#:~:text=To%20send%20an%20SMS%20message%20from%20Python%2C%20we%E2%80%99ll,IDE%20and%20run%20the%20command%3A%20pip%20install%20%22requests%22
+# reference:
+# https://www.pragmaticlinux.com/2021/02/how-to-send-an-sms-message-using-python/#:~:text=To%20send%20an%20SMS%20message%20from%20Python%2C%20we%E2%80%99ll,IDE%20and%20run%20the%20command%3A%20pip%20install%20%22requests%22 
