@@ -5,7 +5,7 @@ def main():
     """
     Send an SMS message for testing purposes.
     """
-    phone = '+15558838530' # <-- Enter your own phone number here
+    phone = '+15' # <-- Enter your own phone number here
     smsmsg = 'Test message using the Textbelt web API.'
     apikey = 'textbelt' # <-- Change to your API key, if desired
     # Attempt to send the SMS message.
