@@ -159,7 +159,7 @@ while True:
         mycursor = mydb.cursor()
         sqlmotor = "Select * from motor"
         mycursor.execute(sqlmotor)
-        t_motor = mycursor.fetchone
+        t_motor = mycursor.fetchall
         print("Motor Status:")
         print(t_motor)
         break
