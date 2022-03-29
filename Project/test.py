@@ -165,6 +165,7 @@ while True:
         print(t_motor)
         print("A?")
         mycursor.close()
+        ser.write(b"\x00")
         
 
     # mycursor = mydb.cursor()
