@@ -157,11 +157,12 @@ while True:
     elif msg_id == 0x07: #Motor
         ser.write(b"\x02")    #Ready to read
         mycursor = mydb.cursor()
-        sqlmotor = "Select * from motor"
+        sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchall
         print("Motor Status:")
         print(t_motor)
+        mycursor.close()
         break
 
     # mycursor = mydb.cursor()
