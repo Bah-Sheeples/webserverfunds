@@ -163,6 +163,7 @@ while True:
         t_motor = mycursor.fetchone
         print("Motor Status:")
         print(t_motor)
+        print("A?")
         close()
         
 
