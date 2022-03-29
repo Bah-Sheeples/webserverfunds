@@ -108,7 +108,7 @@ while True:
             ser.write(b"\x02")         #invalid username. Denied anyways.
             IR == True           
         finally:
-            close()
+            mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
         if IR == True:
             now1= datetime.datetime.now()
@@ -160,11 +160,11 @@ while True:
         mycursor = mydb.cursor()
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
-        t_motor = mycursor.fetchone
+        t_motor = mycursor.fetchone[0]
         print("Motor Status:")
         print(t_motor)
         print("A?")
-        close()
+        mycursor.close()
         
 
     # mycursor = mydb.cursor()
