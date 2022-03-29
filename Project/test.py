@@ -60,7 +60,7 @@ ser = serial.Serial (
 #initializations
 x=1
 y=1
-IR == True
+IR = True
 
 while True: 
     # ser.write(0x01)
