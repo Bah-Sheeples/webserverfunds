@@ -5,7 +5,7 @@ import serial
 import time
 import mysql.connector
 import flask
-import request
+import requests
 
 phone = '+15' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
