@@ -61,7 +61,7 @@ ser = serial.Serial (
 x=1
 y=1
 IR = True
-mycursor = mydb.cursor()
+
 while True: 
     # ser.write(0x01)
     tmsg_id = ser.read()
@@ -81,6 +81,7 @@ while True:
         print(user_id)
         print("Pass = ",pass_id)
         print(pass_id)
+        mycursor = mydb.cursor()
         sqlsel = "SELECT password FROM users WHERE (user = '%s')"%user_id   #Select Database for user==user_id
         print(sqlsel)
         try:    #first execute sqlsel
@@ -107,7 +108,7 @@ while True:
             ser.write(b"\x02")         #invalid username. Denied anyways.
             IR == True           
         finally:
-            pass
+            close()
     elif msg_id == 0x03:    #IR Logs. 
         if IR == True:
             now1= datetime.datetime.now()
@@ -156,13 +157,16 @@ while True:
     elif msg_id == 0x07: #Motor
         ser.write(b"\x02")    #Ready to read
         print("Motoring")
+        mycursor = mydb.cursor()
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone
         print("Motor Status:")
         print(t_motor)
+        close()
         
 
+    # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
     # mycursor.execute(sqla)
     # tlights = mycursor.fetchone()
@@ -171,6 +175,7 @@ while True:
     # mycursor.execute(sqlb)
     # tmotor = mycursor.fetchone()
     # set_motor = tmotor[0]
+    # mycursor.close()
 
 
 # try,except, finally
