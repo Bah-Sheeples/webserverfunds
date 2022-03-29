@@ -65,9 +65,7 @@ IR = True
 while True: 
     # ser.write(0x01)
     tmsg_id = ser.read()
-    print(tmsg_id)
-    msg_id=tmsg_id[0]   #value is stored in an array.
-    print(msg_id)
+    msg_id=tmsg_id[0]   #value is stored in an byte.
     if msg_id == 2:     #Reading matrix data
         ser.write(b"\x02")    #Ready to read
         user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x0A) character
