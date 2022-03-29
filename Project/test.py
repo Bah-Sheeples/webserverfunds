@@ -160,7 +160,7 @@ while True:
         mycursor = mydb.cursor()
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
-        t_motor = mycursor.fetchone[0]
+        t_motor = mycursor.fetchone()
         print("Motor Status:")
         print(t_motor)
         print("A?")
