@@ -96,7 +96,7 @@ while True:
             print(realpass_id)
             print("Database Password: ",realpass_id)
             if realpass_id == pass_id:
-                ("try but success")
+                print("try but success")
                 ser.write(b"\x01")     #accepted
                 IR == False
             else: 
