@@ -57,12 +57,13 @@ ser = serial.Serial (
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS
 )
+#initializations
 x=1
 y=1
+IR == True
 
 while True: 
     # ser.write(0x01)
-    print("Reading Message ID:")
     tmsg_id = ser.read()
     print(tmsg_id)
     msg_id=tmsg_id[0]   #value is stored in an array.
@@ -99,27 +100,34 @@ while True:
             if realpass_id == pass_id:
                 ("try but success")
                 ser.write(b"\x01")     #accepted
+                IR == False
             else: 
                 print("try but failed")
                 ser.write(b"\x02")     #denied
+                IR == True
         except:     #if user doesn't exist(aka error detected) try: 
             print("try failed.")
-            ser.write(b"\x02")         #invalid username. Denied anyways.           
+            ser.write(b"\x02")         #invalid username. Denied anyways.
+            IR == True           
         finally:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
-        now1= datetime.datetime.now()
-        now = str(now1)
-        IR_LOG = open('IR_LOG.txt','a')
-        IR_LOG.write("IR Sensor Tripped: ")
-        IR_LOG.write(now)
-        IR_LOG.write("\n")
-        IR_LOG.close()
-        # Attempt to send the SMS message.
-        if send_textbelt_sms(phone, smsmsg, apikey):
-            print('SMS message successfully sent!')
-        else:
-            print('Could not send SMS message.')
+        if IR == True:
+            now1= datetime.datetime.now()
+            now = str(now1)
+            IR_LOG = open('IR_LOG.txt','a')
+            IR_LOG.write("IR Sensor Tripped: ")
+            IR_LOG.write(now)
+            IR_LOG.write("\n")
+            IR_LOG.close()
+            # Attempt to send the SMS message.
+            if send_textbelt_sms(phone, smsmsg, apikey):
+                print('SMS message successfully sent!')
+            else:
+                print('Could not send SMS message.')
+        else: 
+            pass
+        # ser.write(b"\x02")
         
     # elif msg_id == 0x04: #Light Set. 
     #     ser.write(2)    #Ready to read
@@ -134,11 +142,11 @@ while True:
         light_level= ser.read(1)
         y-=1
         if y==0:
-            int_val = int.from_bytes(light_level,"big")
+            int_val = int.from_bytes(light_level,"big") #Conversion
             int_val = (int_val / 255)*100
             now1= datetime.datetime.now()
             now = str(now1)
-            a = str(round(int_val,2))
+            a = str(round(int_val,2))   #2 decimal numbers.
             print("level: %s",a)
             lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
@@ -147,7 +155,7 @@ while True:
             lightfile.write(now)
             lightfile.write("\n")
             lightfile.close()
-            y+=50
+            y+=1000
         
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
