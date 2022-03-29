@@ -154,7 +154,15 @@ while True:
             lightfile.write("\n")
             lightfile.close()
             y+=1000
-        
+    elif msg_id == 0x07: #Motor
+        ser.write(b"\x02")    #Ready to read
+        mycursor = mydb.cursor()
+        sqlmotor = "Select * from motor"
+        mycursor.execute(sqlmotor)
+        t_motor = mycursor.fetchone
+        print(t_motor)
+        break
+
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
     # mycursor.execute(sqla)
