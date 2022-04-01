@@ -167,7 +167,7 @@ while True:
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone()[0]
         if drawer_stat==t_motor:
-            pass:
+            pass
         else:   
             drawer_stat = t_motor
             print("Motor Status:"t_motor)
