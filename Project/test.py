@@ -179,16 +179,16 @@ while True:
         t_motor = mycursor.fetchone()[0]
         ser.write(b"\x00")
         # if drawer_stat==t_motor:    #nothing changed
-        #     ser.write(b"\x00") 
+        #     ser.write(b"\x01") 
         #     print("Motor Status: None") 
         # else:   
         #     drawer_stat = t_motor
         #     print("Motor Status:", t_motor)
         #     if t_motor==1:
-        #         ser.write(b"\x02")  #move open
+        #         ser.write(b"\x03")  #move open
         #         print("Open")
         #     else: 
-        #         ser.write(b"\x01")  #move close
+        #         ser.write(b"\x02")  #move close
         #         print("Close")
         mycursor.close()
 
