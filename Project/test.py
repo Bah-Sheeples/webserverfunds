@@ -43,7 +43,7 @@ def send_textbelt_sms(phone, msg, apikey):
             result = False;
     # Give the result back to the caller.
     return result
-def db_connect:
+def db_connect():
     mydb = mysql.connector.connect(
         host="localhost",
         user="pi",
@@ -61,7 +61,7 @@ ser = serial.Serial (
 x=1
 y=1
 IR = True
-db_connect
+db_connect()
 
 while True: 
     # ser.write(0x01)
@@ -159,7 +159,7 @@ while True:
         ser.write(b"\x02")    #Ready to read
         print("Motoring")
         connector.close()
-        db_connect
+        db_connect()
         mycursor = mydb.cursor()
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
