@@ -170,7 +170,7 @@ while True:
             pass
         else:   
             drawer_stat = t_motor
-            print("Motor Status:"t_motor)
+            print("Motor Status:", t_motor)
             if t_motor==1:
                 ser.write(b"\x02")
                 print("Open")
