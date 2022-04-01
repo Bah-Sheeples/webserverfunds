@@ -6,6 +6,11 @@ import time
 import mysql.connector
 import flask
 import requests
+import RPi.GPIO as GPIO
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(32, GPIO.OUT)
 
 phone = '+15' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
@@ -101,14 +106,17 @@ while True:
                 print("try but success")
                 ser.write(b"\x01")     #accepted
                 IR == False
+                GPIO.output(32, GPIO.HIGH)
             else: 
                 print("try but failed")
                 ser.write(b"\x02")     #denied
                 IR == True
+                GPIO.output(32, GPIO.LOW)
         except:     #if user doesn't exist(aka error detected) try: 
             print("try failed.")
             ser.write(b"\x02")         #invalid username. Denied anyways.
-            IR == True           
+            IR == True
+            GPIO.output(32, GPIO.LOW)           
         finally:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
