@@ -168,7 +168,7 @@ while True:
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone()[0]
         if drawer_stat==t_motor:
-            pass
+            ser.write(b"\x00")
         else:   
             drawer_stat = t_motor
             print("Motor Status:", t_motor)
