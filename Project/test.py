@@ -66,6 +66,7 @@ while True:
     print("Hi")
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an byte.
+    print(msg_id)
     if msg_id == 2:     #Reading matrix data
         ser.write(b"\x02")    #Ready to read
         user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x0A) character
@@ -178,7 +179,7 @@ while True:
             else: 
                 ser.write(b"\x00")
                 print("Close")
-            mycursor.close()
+        mycursor.close()
 
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
