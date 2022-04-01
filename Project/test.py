@@ -11,6 +11,7 @@ phone = '+15' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
 apikey = 'textbelt' # <-- Change to your API key, if desired. Currently 1text/Day.
 
+
 def send_textbelt_sms(phone, msg, apikey):
     """
     Sends an SMS through the Textbelt API.
