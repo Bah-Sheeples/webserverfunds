@@ -167,12 +167,12 @@ while True:
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone()[0]
-        print("Motor Status:")
-        print(t_motor)
-        print("A?")
+        print("Motor Status:"t_motor)
+        if t_motor==1:
+            ser.write(b"\x02")
+        else: 
+            ser.write(b"\x00")
         mycursor.close()
-        ser.write(b"\x00")
-        
 
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
