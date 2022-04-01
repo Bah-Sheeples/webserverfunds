@@ -158,7 +158,7 @@ while True:
     elif msg_id == 0x07: #Motor
         ser.write(b"\x02")    #Ready to read
         print("Motoring")
-        mydb.disconnect()
+        disconnect()
         db_connect()
         mycursor = mydb.cursor()
         sqlmotor = "SELECT status FROM motor"
