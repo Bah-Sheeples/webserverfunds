@@ -60,7 +60,7 @@ ser = serial.Serial (
 x=1
 y=1
 IR = True
-
+drawer_stat=0
 while True: 
     # ser.write(0x01)
     tmsg_id = ser.read()
@@ -155,7 +155,6 @@ while True:
             y+=1000
     elif msg_id == 0x07: #Motor
         ser.write(b"\x02")    #Ready to read
-        print("Motoring")
         mydb.close()
         mydb = mysql.connector.connect(
             host="localhost",
@@ -167,12 +166,18 @@ while True:
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone()[0]
-        print("Motor Status:"t_motor)
-        if t_motor==1:
-            ser.write(b"\x02")
-        else: 
-            ser.write(b"\x00")
-        mycursor.close()
+        if drawer_stat==t_motor:
+            pass:
+        else:   
+            drawer_stat = t_motor
+            print("Motor Status:"t_motor)
+            if t_motor==1:
+                ser.write(b"\x02")
+                print("Open")
+            else: 
+                ser.write(b"\x00")
+                print("Close")
+            mycursor.close()
 
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
