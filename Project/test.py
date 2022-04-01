@@ -69,10 +69,10 @@ IR = True
 drawer_stat=0
 while True: 
     # ser.write(0x01)
-    print("Hi")
+    # print("Hi")
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an byte.
-    print(msg_id)
+    # print(msg_id)
     if msg_id == 2:     #Reading matrix data
         ser.write(b"\x02")    #Ready to read
         user_id = ser.read_until(b'\x0A')    #Reading user ID. Terminated by NUL (0x0A) character
@@ -178,7 +178,8 @@ while True:
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone()[0]
         if drawer_stat==t_motor:    #nothing changed
-            ser.write(b"\x00")  
+            ser.write(b"\x00") 
+            print("Motor Status: None") 
         else:   
             drawer_stat = t_motor
             print("Motor Status:", t_motor)
