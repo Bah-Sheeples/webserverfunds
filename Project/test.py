@@ -43,7 +43,7 @@ def send_textbelt_sms(phone, msg, apikey):
             result = False;
     # Give the result back to the caller.
     return result
-def db_connect
+def db_connect:
     mydb = mysql.connector.connect(
         host="localhost",
         user="pi",
