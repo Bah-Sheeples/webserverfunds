@@ -43,13 +43,12 @@ def send_textbelt_sms(phone, msg, apikey):
             result = False;
     # Give the result back to the caller.
     return result
-def db_connect():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="pi",
-        password="A1f2i3r4e",
-        database="PROJECT2022"
-    )
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="pi",
+    password="A1f2i3r4e",
+    database="PROJECT2022"
+)
 ser = serial.Serial (
     port='/dev/ttyUSB0',
     baudrate = 2400,
@@ -61,7 +60,6 @@ ser = serial.Serial (
 x=1
 y=1
 IR = True
-db_connect()
 
 while True: 
     # ser.write(0x01)
@@ -158,8 +156,13 @@ while True:
     elif msg_id == 0x07: #Motor
         ser.write(b"\x02")    #Ready to read
         print("Motoring")
-        del mydb
-        db_connect()
+        mydb.close()
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="pi",
+            password="A1f2i3r4e",
+            database="PROJECT2022"
+        )
         mycursor = mydb.cursor()
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
