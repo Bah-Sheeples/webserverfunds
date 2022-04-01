@@ -63,6 +63,7 @@ IR = True
 drawer_stat=0
 while True: 
     # ser.write(0x01)
+    print("Hi")
     tmsg_id = ser.read()
     msg_id=tmsg_id[0]   #value is stored in an byte.
     if msg_id == 2:     #Reading matrix data
