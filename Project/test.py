@@ -139,7 +139,7 @@ while True:
         # ser.write(b"\x02")
         
     elif msg_id == 0x04: #Light Set. 
-        ser.write(2)    #Ready to read
+        ser.write(b"\x02")    #Ready to read
         mydb.close()
         mydb = mysql.connector.connect(
             host="localhost",
