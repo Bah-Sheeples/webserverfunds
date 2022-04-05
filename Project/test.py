@@ -186,7 +186,7 @@ while True:
             drawer_stat = t_motor
             print("Motor Status:", t_motor)
             if t_motor==1:
-                ser.write(b"\x23")  #move open
+                ser.write(b"\x03")  #move open
                 print("Open")
             else: 
                 ser.write(b"\x02")  #move close
