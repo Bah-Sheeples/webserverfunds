@@ -66,7 +66,7 @@ ser = serial.Serial (
 x=1
 y=1
 IR = True
-drawer_stat=1
+drawer_stat=0
 while True: 
     # ser.write(0x01)
     # print("Hi")
