@@ -165,7 +165,7 @@ while True:
             lightfile.close()
             y+=1000
     elif msg_id == 0x07: #Motor
-        ser.write(b"\x02")    #Ready to read
+        # ser.write(b"\x02")    #Ready to read
         mydb.close()
         mydb = mysql.connector.connect(
             host="localhost",
