@@ -66,7 +66,7 @@ ser = serial.Serial (
 x=1
 y=1
 IR = True
-drawer_stat=0
+drawer_stat=1
 while True: 
     # ser.write(0x01)
     # print("Hi")
@@ -186,7 +186,7 @@ while True:
             drawer_stat = t_motor
             print("Motor Status:", t_motor)
             if t_motor==1:
-                ser.write(b"\x13")  #move open
+                ser.write(b"\x23")  #move open
                 print("Open")
             else: 
                 ser.write(b"\x02")  #move close
