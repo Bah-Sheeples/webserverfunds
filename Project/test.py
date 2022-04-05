@@ -106,17 +106,17 @@ while True:
                 print("try but success")
                 ser.write(b"\x01")     #accepted
                 IR == False
-                GPIO.output(32, GPIO.HIGH)
+                GPIO.output(32, GPIO.LOW)
             else: 
                 print("try but failed")
                 ser.write(b"\x02")     #denied
                 IR == True
-                GPIO.output(32, GPIO.LOW)
+                GPIO.output(32, GPIO.HIGH)
         except:     #if user doesn't exist(aka error detected) try: 
             print("try failed.")
             ser.write(b"\x02")         #invalid username. Denied anyways.
             IR == True
-            GPIO.output(32, GPIO.LOW)           
+            GPIO.output(32, GPIO.HIGH)           
         finally:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
@@ -177,12 +177,11 @@ while True:
         sqlmotor = "SELECT status FROM motor"
         mycursor.execute(sqlmotor)
         t_motor = mycursor.fetchone()[0]
-        print("Drawer Stat:", drawer_stat)
-        print("t_motor stat:", t_motor)
         if drawer_stat==t_motor:    #nothing changed
             ser.write(b"\x01") 
-            print("Motor Status: None") 
         else:   
+            print("Drawer Stat:", drawer_stat)
+            print("t_motor stat:", t_motor)
             drawer_stat = t_motor
             print("Motor Status:", t_motor)
             if t_motor==1:
