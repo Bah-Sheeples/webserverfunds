@@ -67,6 +67,7 @@ x=1
 y=1
 IR = True
 drawer_stat=0
+light_stat=0
 while True: 
     # ser.write(0x01)
     # print("Hi")
@@ -150,10 +151,20 @@ while True:
         sqllight = "SELECT status FROM motor"
         mycursor.execute(sqllight)
         t_light = mycursor.fetchone()[0]
-        if t_light==1:
-            ser.write(b"\x01")  #ON
-        else: 
-            ser.write(b"\x02")  #OFF
+        if light_stat==t_light:
+            if t_light==1:
+                ser.write(b"\x01")  #ON
+            else: 
+                ser.write(b"\x02")  #OFF
+        else:
+            light_stat = t_light
+            if t_light==1:
+                ser.write(b"\x01")  #ON
+                print("Lihgt On")
+            else: 
+                ser.write(b"\x02")  #OFF
+                print("Lihgt Off")
+
         mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
         ser.write(b"\x02")    #Ready to read
