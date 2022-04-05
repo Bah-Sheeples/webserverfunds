@@ -137,14 +137,24 @@ while True:
             pass
         # ser.write(b"\x02")
         
-    # elif msg_id == 0x04: #Light Set. 
-    #     ser.write(2)    #Ready to read
-    #     mycursor = mydb.cursor()
-    #     mycursor.execute("SELECT * FROM light_input")
-    #     light_valt= mycursor.fetchone()
-        # light_val= light_valt[0]
-    #     ser.write(light_val)
-        # mycursor.close()
+    elif msg_id == 0x04: #Light Set. 
+        ser.write(2)    #Ready to read
+        mydb.close()
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="pi",
+            password="A1f2i3r4e",
+            database="PROJECT2022"
+        )
+        mycursor = mydb.cursor()
+        sqllight = "SELECT status FROM motor"
+        mycursor.execute(sqllight)
+        t_light = mycursor.fetchone()[0]
+        if t_light==1:
+            ser.write(b"\x01")  #ON
+        else: 
+            ser.write(b"\x02")  #OFF
+        mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
         ser.write(b"\x02")    #Ready to read
         light_level= ser.read(1)
