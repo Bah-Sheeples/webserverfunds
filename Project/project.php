@@ -21,10 +21,10 @@
                 }
             echo "Connected successfully";
             echo "<br/>";
-
-            $motor=htmlspecialchars($_POST["motor"]);
-            $light=htmlspecialchars($_POST["light"]);
             
+            $light=htmlspecialchars($_POST["light"]);
+            $motor=htmlspecialchars($_POST["motor"]);
+
             echo $light;
             echo "<br/>";
             echo $motor;
