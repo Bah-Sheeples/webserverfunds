@@ -1,26 +1,70 @@
 <!DOCTYPE html>
+
 <html>
     <head>
-    <a href="../index.html">Back to</a>
+        <div> <a href="../index.html">INDEX</a></li></div>
+        <title>Controller</title>
+        <script>
+            function openfile(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
+                xhttp.open("POST", "project.php");
+                xhttp.send();
+                
+            }
+        </script>
     </head>
 
+
+
     <body>
-        <iframe name="hidden_iframe" width="0" height="0" style="border:none"></iframe>
-        <form method="POST" action="out.php" target="hidden_iframe">
-        
-        <input type="submit" name="foo" value="A" />
-
-        </form>
-
+        <form action="" method="POST" target="__blank">
+            <p>
+                <label for="light">Lights:</label>
+                <select id="light" name="light">
+                <option value="1">ON</option>
+                <option value="0">OFF</option>
+                </select>
+            </p>
+            <p>
+                <label for="motor">Drawer:</label>
+                <select id="motor" name="motor">
+                <option value="1">OPEN</option>
+                <option value="0">CLOSE</option>
+                </select>
+            </p>
+            <input type="submit">
+            </form>
         <?php
-            $name = $_POST['foo'];
-            $fp = fopen("formdata.txt", "w");
-            fwrite($fp," ")
-            $savestring = $name
-            fwrite($fp,$savestring)
-            fclose($fp)
+            $server = "localhost";
+            $username = "pi";
+            $password = "A1f2i3r4e";
+            $database = "PROJECT2022"; 
+
+            $conn = mysqli_connect($server, $username, $password, $database);
+            // Check for successful connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+                }
+            echo "Connected successfully";
+            echo "<br/>";
+            
+            $light=htmlspecialchars($_POST["light"]);
+            $motor=htmlspecialchars($_POST["motor"]);
+
+            $sql = "Update light Set Status={$light}";
+            $result = mysqli_query($conn, $sql);
+            
+            $sqla = "Update motor Set Status={$motor}";
+            $result = mysqli_query($conn, $sqla);
+
+            echo $sql;
+            echo "<br/>";
+            echo $sqla;
+
         ?>
     </body>
-</html>
 
-<!-- https://www.instructables.com/HTML-to-Python/  -->
+</html>
