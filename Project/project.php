@@ -10,7 +10,7 @@
     <body>
         <?php
             $server = "localhost";
-            $username = "pi";
+            $username = "php";
             $password = "A1f2i3r4e";
             $database = "PROJECT2022"; 
 
