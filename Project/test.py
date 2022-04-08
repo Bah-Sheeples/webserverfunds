@@ -147,7 +147,7 @@ while True:
             database="PROJECT2022"
         )
         mycursor = mydb.cursor()
-        sqllight = "SELECT status FROM motor"
+        sqllight = "SELECT status FROM light"
         mycursor.execute(sqllight)
         t_light = mycursor.fetchone()[0]
         if t_light==1:
