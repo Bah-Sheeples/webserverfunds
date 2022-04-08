@@ -152,10 +152,10 @@ while True:
         t_light = mycursor.fetchone()[0]
         if t_light==1:
             ser.write(b"\x01")  #ON
-            print("Light On")
+            # print("Light On")
         else: 
             ser.write(b"\x02")  #OFF
-            print("Light Off")
+            # print("Light Off")
 
         mycursor.close()
     elif msg_id ==0x05:     #Light Level Logs
