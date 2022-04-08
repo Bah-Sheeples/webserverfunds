@@ -136,8 +136,7 @@ while True:
                 print('Could not send SMS message.')
         else: 
             pass
-        # ser.write(b"\x02")
-        
+        ser.write(b"\x02")  
     elif msg_id == 0x04: #Light Set. 
         ser.write(b"\x02")    #Ready to read
         mydb.close()
