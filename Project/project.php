@@ -25,14 +25,15 @@
             $light=htmlspecialchars($_POST["light"]);
             $motor=htmlspecialchars($_POST["motor"]);
 
-            echo $light;
-            echo "<br/>";
-            echo $motor;
             $sql = "Update lights Set Status={$light}";
             $result = mysqli_query($conn, $sql);
             
             $sqla = "Update motor Set Status={$motor}";
             $result = mysqli_query($conn, $sqla);
+
+            echo $sql;
+            echo "<br/>";
+            echo $sqla;
 
         ?>
 
