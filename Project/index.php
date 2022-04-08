@@ -48,8 +48,8 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
                 }
-            echo "Connected successfully";
-            echo "<br/>";
+            //echo "Connected successfully";
+            //echo "<br/>";
             
             $light=htmlspecialchars($_POST["light"]);
             $motor=htmlspecialchars($_POST["motor"]);
@@ -60,9 +60,9 @@
             $sqla = "Update motor Set Status={$motor}";
             $result = mysqli_query($conn, $sqla);
 
-            echo $sql;
-            echo "<br/>";
-            echo $sqla;
+            // echo $sql;
+            // echo "<br/>";
+            // echo $sqla;
 
         ?>
     </body>
