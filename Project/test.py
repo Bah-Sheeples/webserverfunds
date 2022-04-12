@@ -106,17 +106,17 @@ while True:
             if realpass_id == pass_id:
                 print("try but success")
                 ser.write(b"\x01")     #accepted
-                IR == False
+                IR = False
                 GPIO.output(32, GPIO.LOW)
             else: 
                 print("try but failed")
                 ser.write(b"\x02")     #denied
-                IR == True
+                IR = True
                 GPIO.output(32, GPIO.HIGH)
         except:     #if user doesn't exist(aka error detected) try: 
             print("try failed.")
             ser.write(b"\x02")         #invalid username. Denied anyways.
-            IR == True
+            IR = True
             GPIO.output(32, GPIO.HIGH)           
         finally:
             mycursor.close()
