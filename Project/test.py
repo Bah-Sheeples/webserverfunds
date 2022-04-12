@@ -122,7 +122,6 @@ while True:
             mycursor.close()
     elif msg_id == 0x03:    #IR Logs. 
         if IR == True:
-            print(IR)
             now1= datetime.datetime.now()
             now = str(now1)
             IR_LOG = open('IR_LOG.txt','a')
