@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+import board
+import adafruit_dht
+
 import datetime
 import serial
 import time
