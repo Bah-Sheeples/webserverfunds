@@ -11,6 +11,7 @@ import flask
 import requests
 import RPi.GPIO as GPIO
 
+dhtDevice = adafruit_dht.DHT22(board.D6)
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(32, GPIO.OUT)
