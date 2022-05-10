@@ -169,7 +169,7 @@ while True:
             now = str(now1)
             a = str(round(int_val,2))   #2 decimal numbers.
             print("level: %s",a)
-            lightfile = open('Light_Level.txt','aw')
+            lightfile = open('Light_Level.txt','w')
             lightfile.write("Light Level: ")
             lightfile.write(a)
             lightfile.write("%, Time:")
