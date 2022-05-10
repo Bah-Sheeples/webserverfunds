@@ -50,7 +50,7 @@
             </form>
         
         <p id="hidden" style="display:none"></p>
-        <button type="button" onclick="reveal()">DHT Check</button>
+        <button type="button" onclick="dhtfile()">DHT Check</button>
 
 
         <?php
