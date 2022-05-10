@@ -6,6 +6,15 @@
         <title>Controller</title>
         <script>
             
+            function openfile2(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
+                xhttp.open("GET", "Light_level.txt", true);
+                xhttp.send();
+                
+            }
 
             function openfile(){
                 const xhttp = new XMLHttpRequest();
@@ -40,9 +49,14 @@
             <input type="submit">
             </form>
         
-        <p id="read">DHT Values:</p>
-        <button type="button" onclick="openfile()">DHT Check</button>
 
+        <p>DHT Values</p>
+        <p id="read">Temporary Values</p>
+        <button type="button" onclick="openfile()">DHT Check</button>
+        
+        <p>Light Values</p>
+        <p id="read">Temporary Values</p>
+        <button type="button" onclick="openfile2()">Light Check</button>
 
         <?php
             $server = "localhost";
