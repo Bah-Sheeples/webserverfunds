@@ -9,7 +9,7 @@
             function openfile2(){
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function(){
-                    document.getElementById("read").innerHTML = this.responseText;
+                    document.getElementById("readlight").innerHTML = this.responseText;
                 }
                 xhttp.open("GET", "Light_Level.txt", true);
                 xhttp.send();
@@ -55,7 +55,7 @@
         <button type="button" onclick="openfile()">DHT Check</button>
         
         <p>Light Values</p>
-        <p id="read">Temporary Values</p>
+        <p id="readlight">Temporary Values</p>
         <button type="button" onclick="openfile2()">Light Check</button>
 
         <?php
