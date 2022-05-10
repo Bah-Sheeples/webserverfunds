@@ -24,7 +24,7 @@ while True:
                 temperature_f, temperature_c, humidity
             )
         )
-        DHT_LOG = open('DHT_LOG.txt','a')
+        DHT_LOG = open('DHT_LOG.txt','w')
         DHT_LOG.write("Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(temperature_f, temperature_c, humidity))
         DHT_LOG.write("\n")
         DHT_LOG.close()

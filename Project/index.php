@@ -5,22 +5,14 @@
         <div> <a href="../index.html">INDEX</a></li></div>
         <title>Controller</title>
         <script>
-            function openfile(){
-                const xhttp = new XMLHttpRequest();
-                xhttp.onload = function(){
-                    document.getElementById("read").innerHTML = this.responseText;
-                }
-                xhttp.open("POST", "project.php");
-                xhttp.send();
-                
-            }
+            
 
             function openfile(){
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function(){
                     document.getElementById("read").innerHTML = this.responseText;
                 }
-                xhttp.open("POST", "dht.php", true);
+                xhttp.open("GET", "DHT_LOG.txt", true);
                 xhttp.send();
                 
             }
