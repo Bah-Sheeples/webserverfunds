@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import board
 import adafruit_dht
 
@@ -12,8 +11,9 @@ import requests
 import RPi.GPIO as GPIO
 
 dhtDevice = adafruit_dht.DHT22(board.D6)
+
 GPIO.setwarnings(False)
-GPIO.setmode(BCM.BOARD)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.OUT)
 
 phone = '+15' # <-- Enter your own phone number here
