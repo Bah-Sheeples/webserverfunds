@@ -15,15 +15,14 @@
                 
             }
 
-            function dhtfile(){
-                $.ajax({
-                    type: "POST",
-                    url: "dht_simpletest.py",
-                    data: { param: text}
-                    }).done(function( o ) {
-                    // do something
-                    });
-
+            function openfile(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
+                xhttp.open("POST", "dht.php", true);
+                xhttp.send();
+                
             }
         </script>
     </head>
@@ -50,7 +49,7 @@
             </form>
         
         <p id="hidden" style="display:none"></p>
-        <button type="button" onclick="dhtfile()">DHT Check</button>
+        <button type="button" onclick="openfile()">DHT Check</button>
 
 
         <?php
