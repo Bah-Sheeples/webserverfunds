@@ -16,13 +16,14 @@
             }
 
             function dhtfile(){
-                const xhttp = new XMLHttpRequest();
-                xhttp.onload = function(){
-                    document.getElementById("read").innerHTML = this.responseText;
-                }
-                xhttp.open("POST", "dht_simpletest.py", true);
-                xhttp.send();
-                
+                $.ajax({
+                    type: "POST",
+                    url: "dht_simpletest.py",
+                    data: { param: text}
+                    }).done(function( o ) {
+                    // do something
+                    });
+
             }
         </script>
     </head>
