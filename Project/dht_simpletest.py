@@ -24,11 +24,11 @@ while True:
                 temperature_f, temperature_c, humidity
             )
         )
-        # TEMP_LOG = open('TEMP_LOG.txt','a')
-        # TEMP_LOG.write("Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
-        #     temperature_f, temperature_c, humidity)
-        # TEMP_LOG.write("\n")
-        # TEMP_LOG.close()
+        TEMP_LOG = open('DHT_LOG.txt','a')
+        TEMP_LOG.write("Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
+            temperature_f, temperature_c, humidity)
+        TEMP_LOG.write("\n")
+        TEMP_LOG.close()
 
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
