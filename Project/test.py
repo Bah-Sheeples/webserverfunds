@@ -8,9 +8,10 @@ import flask
 import requests
 import RPi.GPIO as GPIO
 
+dhtDevice = adafruit_dht.DHT22(board.D6)
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(32, GPIO.OUT)
+GPIO.setmode(BCM.BOARD)
+GPIO.setup(12, GPIO.OUT)
 
 phone = '+15' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
