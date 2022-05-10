@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-import board
-import adafruit_dht
-
 import datetime
 import serial
 import time
@@ -11,9 +8,9 @@ import flask
 import requests
 import RPi.GPIO as GPIO
 
-dhtDevice = adafruit_dht.DHT22(board.D6)
 GPIO.setwarnings(False)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(32, GPIO.OUT)
 
 phone = '+15' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
@@ -172,7 +169,7 @@ while True:
             now = str(now1)
             a = str(round(int_val,2))   #2 decimal numbers.
             print("level: %s",a)
-            lightfile = open('Light_Level.txt','w')
+            lightfile = open('Light_Level.txt','a')
             lightfile.write("Light Level: ")
             lightfile.write(a)
             lightfile.write("%, Time:")
@@ -207,29 +204,6 @@ while True:
                 ser.write(b"\x02")  #move close
                 print("Close")
         mycursor.close()
-
-    try:
-        # Print the values to the serial port
-        temperature_c = dhtDevice.temperature
-        temperature_f = temperature_c * (9 / 5) + 32
-        humidity = dhtDevice.humidity
-        print(
-            "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
-                temperature_f, temperature_c, humidity
-            )
-        )
-        DHT_LOG = open('DHT_LOG.txt','w')
-        DHT_LOG.write("Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(temperature_f, temperature_c, humidity))
-        DHT_LOG.write("\n")
-        DHT_LOG.close()
-
-    except RuntimeError as error:
-        # Errors happen fairly often, DHT's are hard to read, just keep going
-        time.sleep(2.0)
-        continue
-    except Exception as error:
-        dhtDevice.exit()
-        raise error
 
     # mycursor = mydb.cursor()
     # sqla = "SELECT status FROM lights"
