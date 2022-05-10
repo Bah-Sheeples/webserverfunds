@@ -11,7 +11,7 @@
                 xhttp.onload = function(){
                     document.getElementById("read").innerHTML = this.responseText;
                 }
-                xhttp.open("GET", "Light_level.txt", true);
+                xhttp.open("GET", "Light_Level.txt", true);
                 xhttp.send();
                 
             }
