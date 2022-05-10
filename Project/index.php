@@ -40,7 +40,7 @@
             <input type="submit">
             </form>
         
-        <p id="hidden" style="display:none"></p>
+        <p id="read">DHT Values:</p>
         <button type="button" onclick="openfile()">DHT Check</button>
 
 
