@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(32, GPIO.OUT)
 
 phone = '+15' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
