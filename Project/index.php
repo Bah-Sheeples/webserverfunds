@@ -14,6 +14,16 @@
                 xhttp.send();
                 
             }
+
+            function dhtfile(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    document.getElementById("read").innerHTML = this.responseText;
+                }
+                xhttp.open("POST", "dht_simpletest.py", true);
+                xhttp.send();
+                
+            }
         </script>
     </head>
 
@@ -37,6 +47,11 @@
             </p>
             <input type="submit">
             </form>
+        
+        <p id="hidden" style="display:none"></p>
+        <button type="button" onclick="reveal()">DHT Check</button>
+
+
         <?php
             $server = "localhost";
             $username = "pi";
