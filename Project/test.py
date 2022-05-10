@@ -174,7 +174,6 @@ while True:
             lightfile.write(a)
             lightfile.write("%, Time:")
             lightfile.write(now)
-            lightfile.write("\n")
             lightfile.close()
             y+=1000
     elif msg_id == 0x07: #Motor
