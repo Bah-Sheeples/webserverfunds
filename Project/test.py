@@ -12,7 +12,7 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(32, GPIO.OUT)
 
-phone = '+15' # <-- Enter your own phone number here
+phone = '+15146648168' # <-- Enter your own phone number here
 smsmsg = 'Motion Sensor Triggered.'
 apikey = 'textbelt' # <-- Change to your API key, if desired. Currently 1text/Day.
 
