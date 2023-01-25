@@ -52,7 +52,7 @@ def send_textbelt_sms(phone, msg, apikey):
 mydb = mysql.connector.connect(
     host="localhost",
     user="pi",
-    password="A1f2i3r4e",
+    password="xx",
     database="PROJECT2022"
 )
 ser = serial.Serial (
